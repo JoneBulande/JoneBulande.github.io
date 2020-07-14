@@ -12,6 +12,11 @@ ul{
 }
 a{text-decoration: none;}
 img{max-width: 100%;}
+
+
+/********************************************/
+/******| HEADER  |******/
+/********************************************/
 .header{
 	top: 0;
 	left: 0;
@@ -36,8 +41,9 @@ img{max-width: 100%;}
 	color: #d5d5d5;
 	text-shadow: 2px 1px #00BCD4;
 }
+
 /********************************************/
-/*MENU*/
+/********| MENU |*******/
 /********************************************/
 .menu ul{
 	display: flex;
@@ -58,11 +64,9 @@ img{max-width: 100%;}
 .menu ul a:hover{
 	color: #00bcd4;
 }
+
 /********************************************/
-/********************************************/
-/********************************************/
-/********************************************/
-/********************************************/
+/******| HERO |******/
 /********************************************/
 .hero{
 	width: 100%;
@@ -106,9 +110,61 @@ img{max-width: 100%;}
 
 }
 .imgs img{
-	width: 80%;
+	width: 75%;
 }
 
+/********************************************/
+/******| SERVICOS |******/
+/********************************************/
+.servicos{
+	display: flex;
+	padding: 50px;
+	text-align: center;
+	align-items: center;
+	flex-direction: column;
+	background-color: #d2f3f7;
+}
+.servicos h1{
+	font-size: 2em;
+	text-align: center;
+}
+.container{
+	display: flex;
+	padding: 30px 20px;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+}
+.item{
+	width: 25%;
+	padding: 10px;
+	margin: 0 10px;
+	transition: all 1s;
+	border-radius: 10px;
+	background-color: #fff;
+	border: 1px solid transparent;
+}
+.item:hover{
+	background-color: #b9f7ff;
+	border: 1px solid #00BCD4;
+}
+.item img{
+	width: 200px;
+	margin: 10px;
+}
+.item h1{
+	margin: 10px;
+	color: #00BCD4;
+	font-size: 1.5em;
+}
+.item p{
+	margin: 10px;
+	max-width: 300px;
+}
+
+/********************************************/
+/******| ANIMATIONS |******/
+/********************************************/
 @keyframes slide-right {
 	0% {
         transform: translateX(-50px);
@@ -160,6 +216,9 @@ img{max-width: 100%;}
     }
 }
 
+/********************************************/
+/******| #MEDIA QUERY MOBILE VERSION |******/
+/********************************************/
 @media (max-width: 700px){
 	.header{
 		padding: 10px;
@@ -210,7 +269,9 @@ img{max-width: 100%;}
 	/*HERO*/
 	.hero{
 		height: 100vh;
+		background: #fff;
 		padding: 10px 20px;
+		margin-bottom: 10px;
 		flex-direction: column-reverse;
 
 	}
@@ -248,6 +309,18 @@ img{max-width: 100%;}
 	}
 	.imgs img{
 		width: 400px;
+	}
+	.servicos{
+		padding: 50px 20px;
+	}
+	.container{
+		padding: 0px;
+		text-align: center;
+		flex-direction: column;
+	}
+	.item{
+		width: 100%;
+		margin: 10px 0;
 	}
 
 }
