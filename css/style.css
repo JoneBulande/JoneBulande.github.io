@@ -221,9 +221,12 @@ img{max-width: 100%;}
 /********************************************/
 @media (max-width: 700px){
 	.header{
-		padding: 10px;
+		padding: 2px 10px;
 		background-color: #fff;
 		border-bottom: 1px solid #00bcd4;
+	}
+	.logo{
+		font-size: 1.5em;
 	}
 	.menu{
 		top: 0;
@@ -256,7 +259,7 @@ img{max-width: 100%;}
 	.menu li a{
 		width: 100%;
 		margin: 5px 0;
-		padding: 15px;
+		padding: 10px;
 		color: #67d7e6;
 		font-size: 1.5em;
 		display: inline-block;
