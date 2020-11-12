@@ -1,0 +1,60 @@
+@media (max-width: 720px){
+	.header .logo {
+			font-size: 3em;
+	}
+
+	.menu .btn-menu {
+		display: block;
+	}
+
+	.menu ul {
+		right: 0;
+		top: 70px;
+		width: 80%;
+		height: 100vh;
+		display: flex;
+		display: none;
+		padding-top: 50px;
+		position: absolute;
+		flex-direction: column;
+		background-color: #a0b8fa;
+	}
+
+	.menu ul.ativo{
+		display: block;
+	}
+
+	.menu li {
+		width: 100%;
+		display: block;
+		text-align: left;
+	}
+	.menu li a {
+		display: block;
+		font-size: 1.5em;
+		padding: 15px 10px;
+	}
+
+
+
+	.conteudo {
+		flex-wrap: nowrap;
+		align-items: center;
+		flex-direction: column;
+		justify-content: flex-end;
+	}
+	.titulo-principal h1{
+		font-size: 2rem;
+	}
+	.titulo-principal {
+		align-items: flex-end;
+	}
+	.btn {
+		margin: 10px 0;
+		font-size: 1em;
+		padding: 10px 25px;
+	}
+	.conteudo img {
+		width: 80%;
+	}
+}

@@ -1,0 +1,51 @@
+/* | animação do conteudo da home | */
+@keyframes slideDown{
+	from{
+		opacity: 0;
+		transform: translateY(-50px);
+	}
+	to{
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+.conteudo {
+	animation: slideDown 1s forwards;
+}
+.conteudo .img {
+	animation: slideDown 3s forwards;
+}
+.redes-sociais {
+	animation: slideDown 4s forwards;
+}
+
+
+/* | animação do Menu mobile | */
+@keyframes slideRight {
+	from{
+		opacity: 0;
+		transform: translateX(0px);
+	}
+	to{
+		opacity: 1;
+		transform: translateX(50px);
+	}
+}
+.menu ul {
+	animation: slideRight .5s forwards;
+}
+
+@keyframes slideLeft {
+	from{
+		opacity: 0;
+		transform: translateX(50px);
+	}
+	to{
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+.menu ul.ativo {
+	animation: slideLeft .5s forwards;
+}

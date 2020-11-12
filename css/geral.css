@@ -1,0 +1,139 @@
+/****| RESET |****/
+* {
+	margin: 0;
+	padding: 0;
+	outline: none;
+	font-size: 100%;
+	box-sizing: border-box;
+}
+body {
+	color: #124;
+	font-family: monospace;
+}
+a {
+	color: #000;
+	text-decoration: none;
+}
+ul, li {
+	list-style: none;
+}
+
+/****| HEADER |****/
+.header {
+	width: 100%;
+	z-index: 2;
+	position: fixed;
+	background-color: #fff;	
+	border-bottom: 1px solid #0000000f;
+}
+
+.header .container {
+	display: flex;
+	padding: 0 20px;
+	margin: 20px auto;
+	max-width: 1100px;
+	align-items: center;
+	justify-content: space-between;
+}
+.header .logo {
+	font-size: 2em;
+	color: #4070f4;
+	transition: .5s;
+}
+.header .logo:hover{
+	text-shadow: 1px 2px 1px #000;
+}
+
+
+/****| MENU |****/
+
+.menu .btn-menu {
+	display: none;
+	font-size: 2em;
+	color: #4070f4;
+	cursor: pointer;
+	font-weight: bolder;
+}
+.menu ul {
+	display: flex;
+	flex-direction: row;
+}
+.menu ul li {
+	margin: 0 10px;
+}
+.menu ul a {
+	font-size: 1.5em;
+	padding: 10px 2px;
+	font-weight: bold;
+	transition: color, border .3s;
+}
+.menu ul a:hover{
+	color: #4070f4;
+	border-bottom: 4px solid #4070f4;
+}
+
+/****| // |****/
+.conteudo {
+	display: flex;
+	height: 100vh;
+	padding: 20px;
+	margin: 0 auto;
+	flex-wrap: wrap;
+	max-width: 1100px;
+	align-items: flex-end;
+	justify-content: space-between;
+}
+
+.titulo-principal h1{
+	font-size: 3rem;
+	font-weight: bold;
+	font-family: sans-serif;
+}
+
+.conteudo span{
+	color: #4070f4;
+}
+
+.btn {
+	color: #fff;
+	border: none;
+	margin: 30px 0;
+	cursor: pointer;
+	font-size: 1.2em;
+	font-weight: bold;
+	border-radius: 5px;
+	padding: 10px 35px;
+	transition: all 1s;
+	background-color: #4070f4;
+	border: 1px solid transparent;
+}
+
+.btn:hover {
+	color: #4070f4;
+	background-color: #fff;
+	border-color: #4070f4;
+}
+
+.img img {
+	width: 320px;
+}
+
+/* redes sociais */
+.redes-sociais {
+	width: 100%;
+	padding: 10px;
+	display: flex;
+}
+.redes-sociais li {
+	margin: 0 10px;
+}
+.redes-sociais li  a {
+	color: #4070f4;
+	font-size: 1.5em;
+}
+
+
+.sublinhado {
+	color: #4070f4;
+	border-bottom: 4px solid #4070f4;
+}

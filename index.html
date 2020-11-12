@@ -1,74 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Jone Bulande</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jone Bulande</title>
+  <meta charset="utf-8">
+  <link href="img/Jone_Bulande.png">
+   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<header class="header">
-		<input type="checkbox" id="check">
-		<a href="index.html"class="logo"><h1>Jone Bulande</h1></a>
-		<nav class="menu">
-			<ul>
-				<li><a href="#home">Home</a></li>
-				<li><a href="#servicos">Serviços</a></li>
-				<li><a href="#">Portfólio</a></li>
-				<li><a href="#">Contato</a></li>				
-			</ul>
-		</nav>
-		<label for="check" class="checkbtn">&equiv;</label>
-	</header>
 
+  <header class="header">
+  	<div class="container">
+	  	<a href="index.html">
+	  		<h1 class="logo">Jone</h1>
+	  	</a>
+	  	<nav class="menu" data-menu>
+	  		<b class="btn-menu">&#x2630;</b>
+	  		<ul>
+	  			<li><a href="#home">Home</a></li>
+	  			<!-- <li><a href="#">Sobre</a></li> -->
+	  			<li><a href="#cool">Habilidades</a></li>
+	  			<li><a href="#nice">Trabalhos</a></li>
+	  			<li><a href="#">Contato</a></li>
+	  		</ul>
+	  	</nav>
+  	</div>
+  </header>
+  
+  <section class="conteudo" id="home">
+  	
+  	<div class="titulo-principal">
+  		<h1>
+  			Olá, <br> eu sou <span>Jone</span><br>	
+  			Web Developer
+  		</h1>
+  		<button class="btn" data-btn>Contato</button>
+  	</div>
+  	
+  	<div class="img">
+  		<img src="img/Jone_Bulande.png">
+  	</div>
 
-	<section class="hero">
-		
-		<div class="title" id="home">
-			<h1>Web <br/> Developer</h1>
-			<p>
-				Minimize os danos causados pela pandemia. Invista em um site moderno profissional responsivo.
-				Deixe sua marca viva e seus clientes mais proximos de você.
-				
-			</p>
-			<button class="btn">Contato</button>
-		</div>
+  	<div class="redes-sociais">
+		<li><a href="https://www.linkedin.com/in/jone-bulande/" target="_black">Linkedin</a></li>
+  		<li><a href="https://www.instagram.com/jone-bulande/" target="_black">Instagram</a></li>
+  		<li><a href="https://github.com/JoneBulande" target="_black">Github</a></li>
+  	</div>
 
-		<div class="imgs">
-			<img src="img/dev.png">
-		</div>
-
-	</section>
-	
-	<section class="servicos" id="servicos">
-		
-		<h1> Serviços </h1>
-
-		<div class="container">
-			<div class="item">
-				<img src="img/html.png">
-				<h1>criação de sites</h1>
-				<p>
-					O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. O Lorem Ipsum tem vindo a ser o texto padrão usado por estas indústrias desde o ano de 1500.
-				</p>
-			</div>
-			<div class="item">
-				<img src="img/seo.png">
-				<h1>Seo</h1>
-				<p>
-					O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. O Lorem Ipsum tem vindo a ser o texto padrão usado por estas indústrias desde o ano de 1500.
-				</p>
-			</div>
-			<div class="item">
-				<img src="img/marketing.png">
-				<h1>Markiding digital</h1>
-				<p>
-					O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. O Lorem Ipsum tem vindo a ser o texto padrão usado por estas indústrias desde o ano de 1500.
-				</p>
-			</div>
-		</div>
-
-	</section>
+  </section>
+  
+<script type="module" src="js/script.js"></script>
 
 </body>
 </html>
