@@ -33,7 +33,7 @@
 	}
 	.menu.abrir {
 		display: flex;
-		animation: slideLeft 1s forwards;
+		animation: slideLeft .5s forwards;
 	}
 
 	@keyframes slideRight {

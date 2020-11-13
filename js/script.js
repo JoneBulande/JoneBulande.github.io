@@ -1,9 +1,9 @@
 import initScrollMenu from './modules/menumobile.js';
-//import initScrollSuave from './modules/scrollsuave.js';
+import initScrollSuave from './modules/scrollsuave.js';
 
 
 initScrollMenu()
-//initScrollSuave();
+initScrollSuave();
 
 /*
 const links = document.querySelectorAll('[data-menu] a');

@@ -18,6 +18,9 @@ a {
 ul, li {
 	list-style: none;
 }
+img {
+	width: 100%;
+}
 
 /****| HEADER |****/
 .header {
@@ -28,7 +31,7 @@ ul, li {
 	padding: 20px 0;	
 	position: fixed;	
 	background-color: #fff;	
-	border-bottom: 1px solid #191c03;
+	border-bottom: 1px solid #0000001a;
 }
 .conteudo {
 	display: flex;
@@ -115,9 +118,83 @@ ul, li {
 .redes-sociais li {
 	margin-right: 10px;
 }
-.redes-sociais a {
-	font-size: 1.5em;;
+.redes-sociais img{
+	padding: 2px;
+	border-radius: 50%;
+	transition: all .5s;
+	background-size: auto;
+	border: 1px solid #000;
 }
-.redes-sociais a:hover{
+.redes-sociais img:hover{
+	transform: translateY(-5px);
+	background-color: #4070f4;
+}
+
+
+/***| CONTEUDO  |***/
+.habilidades {
+	height: 90vh;
+	display: grid;
+	padding: 10px;
+	margin: 0 auto;
+	flex-wrap: wrap;
+	max-width: 1000px;
+	grid-template-areas: 
+		'titulo titulo'
+		'descricao trabalho'
+	;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+
+.habilidades .titulo{
+	padding: 5px;
+	font-size: 2em;
+	grid-area: titulo;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.habilidades .titulo h2{
+	padding: 5px;
 	color: #4070f4;
+	display: inline;
+	border-bottom: 2px solid #4070f4;
+}
+
+.habilidades .descricao {
+	display: flex;
+	padding: 0 10px;
+	grid-area: descricao;
+	flex-direction: column;
+}
+
+.habilidades .descricao h3{
+	font-size: 1.5em;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.habilidades .descricao p{
+	font-size: 1.2em;
+	line-height: 20px;
+}
+
+.habilidades .descricao .imgs{
+	display: flex;
+	padding: 20px;
+	flex-wrap: wrap;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+.descricao img{
+	width: 50px;
+	margin: 10px;
+}
+
+.habilidades .trabalho {
+	grid-area: trabalho;
+	border-radius: 7px;
+	background-color: green;
 }

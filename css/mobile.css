@@ -10,7 +10,7 @@
 	}
 	.menu {
 		right: 0;
-		top: 55px;
+		top: 60px;
 		width: 60%;
 		height: 100vh;
 		display: none;
@@ -63,5 +63,23 @@
 	.redes-sociais {
 		font-size: .5em;
 		justify-content: center;
+	}
+	.habilidades {
+		grid-template-areas: 
+		' titulo '
+		' descricao '
+		' trabalho '
+	;
+	}
+	.descricao {
+		padding: 10px;
+	}
+	.descricao h3{
+		font-size: 2.5em;
+		font-weight: bold;
+		margin-bottom: 10px;
+	}
+	.descricao p{
+		font-size: 2em;
 	}
 }
