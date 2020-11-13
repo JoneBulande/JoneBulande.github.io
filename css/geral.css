@@ -108,11 +108,11 @@ ul, li {
 
 .redes-sociais {
 	width: 100%;
-	padding: 10px;
 	display: flex;
+	padding: 10px 0;
 }
 .redes-sociais li {
-	margin: 0 10px;
+	margin-right: 10px;
 }
 .redes-sociais a {
 	font-size: 1.5em;;

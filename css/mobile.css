@@ -3,7 +3,7 @@
 		padding: 10px;
 	}
 	.header .logo {
-			font-size: 2em;
+			font-size: 2.5em;
 	}
 	.btn-menu {
 		display: block;
@@ -51,14 +51,14 @@
 		flex-wrap: nowrap;
 		align-items: center;
 		flex-direction: column;
-		justify-content: flex-end;
+		justify-content: center;
 	}
 	.img {
 		display: flex;
 		justify-content: center;
 	}
 	.container img {
-		width: 50%;
+		width: 60%;
 	}
 	.redes-sociais {
 		font-size: .5em;
