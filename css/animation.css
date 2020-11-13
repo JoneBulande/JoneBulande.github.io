@@ -9,43 +9,57 @@
 		transform: translateY(0);
 	}
 }
-.conteudo {
+.container {
 	animation: slideDown 1s forwards;
 }
-.conteudo .img {
+.container .img {
 	animation: slideDown 3s forwards;
 }
 .redes-sociais {
 	animation: slideDown 4s forwards;
 }
 
-
 /* | animação do Menu mobile | */
-@keyframes slideRight {
-	from{
-		opacity: 0;
-		transform: translateX(0px);
-	}
-	to{
-		opacity: 1;
-		transform: translateX(50px);
-	}
-}
-.menu ul {
-	animation: slideRight .5s forwards;
-}
+@media (max-width: 720px) {
 
-@keyframes slideLeft {
-	from{
-		opacity: 0;
-		transform: translateX(50px);
+	@keyframes slideRight {
+		from{
+			opacity: 0;
+			transform: translateX(0px);
+		}
+		to{
+			opacity: 1;
+			transform: translateX(50px);
+		}
 	}
-	to{
-		opacity: 1;
-		transform: translateX(0);
+	.menu {
+		animation: slideRight .5s forwards;
 	}
-}
 
-.menu ul.ativo {
-	animation: slideLeft .5s forwards;
+	@keyframes slideLeft {
+		from{
+			opacity: 0;
+			transform: translateX(50px);
+		}
+		to{
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+
+	.menu.ativo {
+		animation: slideLeft .5s forwards;
+	}
+	
+	@keyframes slideRotate {
+		from{
+			transform: rotate(0);
+		}
+		to{
+			transform: rotate(-90deg);
+		}
+	}
+	.btn-menu.ativo{
+		animation: slideRotate .5s forwards;
+	}
 }

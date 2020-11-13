@@ -2,11 +2,12 @@ export default function initScrollMenu() {
       
     function handleMenu(event) {
         event.preventDefault();
-        const menu = document.querySelector('[data-menu] ul');
-        menu.classList.toggle('ativo')
+        event.target.classList.toggle('ativo');
+        const menu = document.querySelector('[data-menu]');
+        menu.classList.toggle('ativo');
     }
     
-    const btnMenu = document.querySelector('[data-menu] .btn-menu');
+    const btnMenu = document.querySelector('.btn-menu');
     btnMenu.addEventListener('click', handleMenu)
 }
 

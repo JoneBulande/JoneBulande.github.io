@@ -1,15 +1,16 @@
 @media (max-width: 720px){
-	.header .logo {
-			font-size: 3em;
+	.header {
+		padding: 20px;
 	}
-
-	.menu .btn-menu {
+	.header .logo {
+			font-size: 3.5em;
+	}
+	.btn-menu {
 		display: block;
 	}
-
-	.menu ul {
+	.menu {
 		right: 0;
-		top: 70px;
+		top: 94px;
 		width: 80%;
 		height: 100vh;
 		display: flex;
@@ -19,8 +20,7 @@
 		flex-direction: column;
 		background-color: #a0b8fa;
 	}
-
-	.menu ul.ativo{
+	.menu.ativo{
 		display: block;
 	}
 
@@ -34,17 +34,19 @@
 		font-size: 1.5em;
 		padding: 15px 10px;
 	}
-
-
-
-	.conteudo {
+	.container {
+		grid-gap: 10px;
 		flex-wrap: nowrap;
 		align-items: center;
 		flex-direction: column;
 		justify-content: flex-end;
 	}
+	.img {
+		display: flex;
+		justify-content: center;
+	}
 	.titulo-principal h1{
-		font-size: 2rem;
+		font-size: 2.3rem;
 	}
 	.titulo-principal {
 		align-items: flex-end;
@@ -54,7 +56,10 @@
 		font-size: 1em;
 		padding: 10px 25px;
 	}
-	.conteudo img {
+	.container img {
 		width: 80%;
+	}
+	.redes-sociais {
+		justify-content: center;
 	}
 }
