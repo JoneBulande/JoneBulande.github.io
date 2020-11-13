@@ -21,34 +21,32 @@
 
 /* | animação do Menu mobile | */
 @media (max-width: 720px) {
-
-	@keyframes slideRight {
-		from{
-			opacity: 0;
-			transform: translateX(0px);
-		}
-		to{
-			opacity: 1;
-			transform: translateX(50px);
-		}
-	}
-	.menu {
-		animation: slideRight .5s forwards;
-	}
-
 	@keyframes slideLeft {
 		from{
 			opacity: 0;
-			transform: translateX(50px);
+			transform: translateX(30px);
 		}
 		to{
 			opacity: 1;
 			transform: translateX(0);
 		}
 	}
+	.menu.abrir {
+		display: flex;
+		animation: slideLeft 1s forwards;
+	}
 
-	.menu.ativo {
-		animation: slideLeft .5s forwards;
+	@keyframes slideRight {
+		from{
+			transform: translateX(0);
+		}
+		to{
+			transform: translateX(150px);
+		}
+	}
+	.menu.fechar {
+		background-color: red;
+		animation: slideRight 1s forwards;
 	}
 	
 	@keyframes slideRotate {
