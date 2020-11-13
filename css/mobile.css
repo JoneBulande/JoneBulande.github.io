@@ -64,7 +64,11 @@
 		font-size: .5em;
 		justify-content: center;
 	}
+	.redes-sociais img{
+		width: 100%;
+	}
 	.habilidades {
+		padding-top: 15vh;
 		grid-template-areas: 
 		' titulo '
 		' descricao '
@@ -81,5 +85,8 @@
 	}
 	.descricao p{
 		font-size: 2em;
+	}
+	.descricao img{
+		margin: 10px;
 	}
 }

@@ -61,3 +61,16 @@
 		animation: slideRotate .5s forwards;
 	}
 }
+
+
+
+
+[data-anime="right"]{
+	opacity: 0;
+	transition: 2s;
+	transform: translateX(-50px);
+}
+[data-anime="right"].ativo{
+	opacity: 1;
+	transform: translateX(0);
+}
