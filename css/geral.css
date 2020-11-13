@@ -40,6 +40,7 @@ ul, li {
 	justify-content: space-between;
 }
 .logo {
+	color: #4070f4;
 	font-size: 2.5em;
 	font-weight: bold;
 }
