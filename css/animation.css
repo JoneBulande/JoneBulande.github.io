@@ -78,7 +78,7 @@
 [data-anime="left"]{
 	opacity: 0;
 	transition: 1s;
-	transform: translateX(50px);
+	transform: translateX(15px);
 }
 [data-anime="left"].ativo{
 	opacity: 1;
