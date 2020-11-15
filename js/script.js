@@ -1,8 +1,8 @@
-import initScrollMenu from './modules/menumobile.js';
+import menuMobile from './modules/menumobile.js';
 import initScrollSuave from './modules/scrollsuave.js';
 import initAnimacaoScroll from './modules/animacao-scroll.js';
 
 
-initScrollMenu()
+menuMobile();
 initScrollSuave();
 initAnimacaoScroll();

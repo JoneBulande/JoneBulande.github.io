@@ -10,10 +10,12 @@ export default function initScrollSuave() {
 		const href = event.target.getAttribute('href')
 		const section = document.querySelector(href);
 		const menu = document.querySelector('[data-menu]');
+		const btnMenu = document.querySelector('.btn-menu');
 		
-		if(menu.classList.contains('ativo')) {
-			menu.classList.add('ativo');
-		}        
+		if(menu.classList.contains('abrir')) {
+			btnMenu.classList.remove('ativo');
+			menu.classList.remove('abrir');
+		}
 		
 		section.scrollIntoView({
 			block:'start',

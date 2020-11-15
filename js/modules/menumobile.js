@@ -1,4 +1,4 @@
-export default function initScrollMenu() {
+export default function menuMobile() {
     const btnMenu = document.querySelector('.btn-menu');
 
     function handleMenu(event) {
@@ -6,9 +6,6 @@ export default function initScrollMenu() {
         event.target.classList.toggle('ativo');
         const menu = document.querySelector('[data-menu]');
         menu.classList.toggle('abrir');
-    }    
-    
+    }
     btnMenu.addEventListener('click', handleMenu)
-
 }
-
