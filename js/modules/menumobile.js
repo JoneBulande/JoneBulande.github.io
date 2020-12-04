@@ -5,7 +5,7 @@ export default function menuMobile() {
         event.preventDefault();
         event.target.classList.toggle('ativo');
         const menu = document.querySelector('[data-menu]');
-        menu.classList.toggle('abrir');
+        menu.classList.toggle('ativo');
     }
     btnMenu.addEventListener('click', handleMenu)
 }
