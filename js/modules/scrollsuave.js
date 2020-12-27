@@ -5,7 +5,12 @@ export default function initScrollSuave() {
 	const links = document.querySelectorAll('[data-menu] a');
 	
 	function scrollSuave(event) {
-		event.preventDefault();		
+		event.preventDefault();
+		
+		links.forEach((link) => {
+			link.classList.remove('underline')
+		});
+		event.target.classList.add('underline')
 		
 		const href = event.target.getAttribute('href')
 		const section = document.querySelector(href);
