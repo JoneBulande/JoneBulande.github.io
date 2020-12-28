@@ -10,7 +10,7 @@ export default function initScrollSuave() {
 		links.forEach((link) => {
 			link.classList.remove('underline')
 		});
-		event.target.classList.add('underline')
+		event.target.classList.add('underline');
 		
 		const href = event.target.getAttribute('href')
 		const section = document.querySelector(href);
