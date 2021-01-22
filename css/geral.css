@@ -80,7 +80,9 @@ img {
 	border-bottom: 2px solid #4070f4;
 }
 
+/*************************************/
 /* | CONTAINER | */
+/*************************************/
 .container {
 	height: 100vh;
 	display: flex;
@@ -115,6 +117,10 @@ img {
 	border: 1px solid #4070f4;
 }
 
+
+/*************************************/
+/* | redes-sociais | */
+/*************************************/
 .redes-sociais {
 	width: 100%;
 	display: flex;

@@ -58,7 +58,7 @@
 		flex-wrap: nowrap;
 		align-items: center;
 		flex-direction: column;
-		justify-content: center;
+		justify-content: flex-end;
 	}
 	.img {
 		display: flex;
