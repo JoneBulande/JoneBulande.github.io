@@ -117,6 +117,12 @@ img {
 	border: 1px solid #4070f4;
 }
 
+/***/
+.container .img {
+	width: 320px;
+	margin-top: 5vh;
+}
+
 
 /*************************************/
 /* | redes-sociais | */
