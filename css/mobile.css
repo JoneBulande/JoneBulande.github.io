@@ -57,11 +57,12 @@
 	}
 	
 	.titulo-principal {
+		margin-top: 2vh;
 		align-items: flex-end;
 	}
 	
 	.titulo-principal h1 {
-	font-size: 2rem;
+		font-size: 2rem;
 	}
 	
 	.btn {
@@ -73,13 +74,12 @@
 
 	.img {
 		display: flex;
-		margin-top: 0;
 		justify-content: center;
 	}
 
 	.container img {
-		width: 60%;
-		margin-top: 0;
+		width: 50%;
+		margin: 0;
 	}
 
 	.redes-sociais {
