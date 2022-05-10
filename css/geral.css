@@ -29,14 +29,19 @@ img {
 
 /****| HEADER |****/
 .header {
-	top: 0;
-	left: 0;
 	z-index: 1;
 	width: 100%;
 	padding: 20px 0;
-	position: fixed;
+	position: static;
 	background-color: #fff;
+	/* transition: background, padding 1s; */
 	border-bottom: 1px solid #0000001a;
+}
+
+.header.ativo {
+	top: 0;
+	left: 0;
+	position: fixed;
 }
 
 .conteudo {
@@ -92,7 +97,7 @@ img {
 /* | CONTAINER | */
 /*************************************/
 .container {
-	height: 100vh;
+	height: 85vh;
 	display: flex;
 	padding: 20px;
 	margin: 3vh auto;
@@ -100,6 +105,10 @@ img {
 	max-width: 1000px;
 	align-items: flex-end;
 	justify-content: space-between;
+}
+
+.container.ativo {
+	height: 100vh;
 }
 
 .titulo-principal h1 {

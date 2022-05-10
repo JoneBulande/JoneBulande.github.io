@@ -21,6 +21,7 @@
 		right: 0;
 		top: 58px;
 		width: 60%;
+		z-index: 2;
 		height: 100vh;
 		padding-top: 50px;
 		position: absolute;
