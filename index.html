@@ -1,198 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html>
 
-        <link rel="stylesheet" href="assets/css/styles.css">
-        <link rel="icon" href="/assets/img/JoneBulande.png">
+<head>
+	<meta charset="utf-8">
+	<title>Jone Bulande</title>
+	<link rel="icon" href="img/JoneBulande.png">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 
-        <!-- =====BOX ICONS===== -->
-        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+<body>
 
-        <title>Jone Bulande</title>
-    </head>
-    <body>
-        <!--===== HEADER =====-->
-        <header class="l-header">
-            <nav class="nav bd-grid">
-                <div>
-                    <a href="#" class="nav__logo">Jone</a>
-                </div>
+	<header class="header">
+		<div class="conteudo">
+			<a href="index.html">
+				<h1 class="logo">Jone</h1>
+			</a>
+			<b class="btn-menu">&#x2630;</b>
+			<nav class="menu" data-menu>
+				<li><a href="#home">Home</a></li>
+				<li><a href="#cool">Habilidades</a></li>
+				<!-- <li><a href="#nice">Trabalhos</a></li>
+			<li><a href="#">Contato</a></li> -->
+			</nav>
+		</div>
+	</header>
 
-                <div class="nav__menu" id="nav-menu">
-                    <ul class="nav__list">
-                        <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
-                        <li class="nav__item"><a href="#about" class="nav__link">Sobre</a></li>
-                        <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
-                        <li class="nav__item"><a href="#work" class="nav__link">Trabalhos</a></li>
-                        <li class="nav__item"><a href="#contact" class="nav__link">Contacto</a></li>
-                    </ul>
-                </div>
+	<section class="container" id="home">
 
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class='bx bx-menu'></i>
-                </div>
-            </nav>
-        </header>
+		<div class="titulo-principal">
+			<h1>
+				Olá,<br> aqui <span>Jone.</span>
+				<br> Eu sou Web<br>
+				<span>Developer</span>
+			</h1>
+			<a href=" https://wa.me/+258846364565" target="_blanck">
+				<button class="btn" data-btn>Contato</button>
+			</a>
+		</div>
 
-        <main class="l-main">
-            <!--===== HOME =====-->
-            <section class="home bd-grid" id="home">
-                <div class="home__data">
-                    <h1 class="home__title">Hi,<br>I'am <span class="home__title-color">Jone</span><br> Web Developer</h1>
+		<div class="img">
+			<img src="img/JoneBulande.png">
+		</div>
 
-                    <a href="#" class="button">Contact</a>
-                </div>
+		<div class="redes-sociais">
+			<li><a href="https://www.linkedin.com/in/jone-bulande/" target="_black">
+					<img src="img/linkedin.png">
+				</a></li>
 
-                <div class="home__social">
-                    <a href="https://www.linkedin.com/in/jone-bulande/" class="home__social-icon" target="_black"><i class='bx bxl-linkedin'></i></a>
-                    <a href="https://www.instagram.com/joneBulande/" class="home__social-icon" target="_black"><i class='bx bxl-instagram' ></i></a>
-                    <a href="https://github.com/JoneBulande" class="home__social-icon" target="_black"><i class='bx bxl-github' ></i></a>
-                </div>
+			<li><a href="https://www.instagram.com/joneBulande/" target="_black">
+					<img src="img/instagram.png">
+				</a></li>
 
-                <div class="home__img">    
-                    <img src="assets/img/JoneBulande.png" alt="">
-                </div>
-            </section>
+			<li>
+				<a href="https://github.com/JoneBulande" target="_black">
+					<img src="img/github.png">
+				</a>
+			</li>
+		</div>
+	</section>
 
-            <!--===== ABOUT =====-->
-            <section class="about section " id="about">
-                <h2 class="section-title">Sobre</h2>
+	<section class="habilidades" id="cool">
+		<div class="titulo">
+			<h2>Habilidades</h2>
+		</div>
+		<div class="descricao" data-anime="right">
+			<h3>Profesional Skills</h3>
+			<p>
+				Fortes habilidades em tecnologias de programação para web (front-end), html5, css3, javascript
+				Es6+, ReactJs e Back-end conhecimento em NodeJs, Mysql, PostgreSql, assim como em outro tipo de tecnologias como git, github, npm.
+			</p>
+			<div class="imgs" data-anime="up">
+				<img src="img/nodejs.png">
+				<img src="img/html5.png">
+				<img src="img/css3.png">
+				<img src="img/javascript.png">
+				<img src="img/reactjs.png">
+				<img src="img/mysql.png">
+				<img src="img/postgresql.png">
+				<img src="img/git.png">
+				<img src="img/github2.png">
+				<img src="img/npm.png">
+			</div>
+		</div>
+		<img class="trabalho" src="img/work3.jpg" data-anime="left">
 
-                <div class="about__container bd-grid">
-                    <div class="about__img">
-                        <img src="assets/img/sobre.jpg" alt="">
-                    </div>
-                    
-                    <div>
-                        <h2 class="about__subtitle">I'am Jone</h2>
-                        <p class="about__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate cum expedita quo culpa tempora, assumenda, quis fugiat ut voluptates soluta, aut earum nemo recusandae cumque perferendis! Recusandae alias accusamus atque.</p>           
-                    </div>                                   
-                </div>
-            </section>
-
-            <!--===== SKILLS =====-->
-            <section class="skills section" id="skills">
-                <h2 class="section-title">Skills</h2>
-
-                <div class="skills__container bd-grid">          
-                    <div>
-                        <h2 class="skills__subtitle">Profesional Skills</h2>
-                        <p class="skills__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit optio id vero amet, alias architecto consectetur error eum eaque sit.</p>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxl-html5 skills__icon'></i>
-                                <span class="skills__name">HTML5</span>
-                            </div>
-                            <div class="skills__bar skills__html">
-
-                            </div>
-                            <div>
-                                <span class="skills__percentage">95%</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxl-css3 skills__icon'></i>
-                                <span class="skills__name">CSS3</span>
-                            </div>
-                            <div class="skills__bar skills__css">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">85%</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxl-javascript skills__icon' ></i>
-                                <span class="skills__name">JAVASCRIPT</span>
-                            </div>
-                            <div class="skills__bar skills__js">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">65%</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxs-paint skills__icon'></i>
-                                <span class="skills__name">UX/UI</span>
-                            </div>
-                            <div class="skills__bar skills__ux">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">85%</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div>              
-                        <img src="assets/img/work3.jpg" alt="" class="skills__img">
-                    </div>
-                </div>
-            </section>
-
-            <!--===== WORK =====-->
-            <section class="work section" id="work">
-                <h2 class="section-title">Work</h2>
-
-                <div class="work__container bd-grid">
-                    <div class="work__img">
-                        <img src="assets/img/work1.jpg" alt="">
-                    </div>
-                    <div class="work__img">
-                        <img src="assets/img/work2.jpg" alt="">
-                    </div>
-                    <div class="work__img">
-                        <img src="assets/img/work3.jpg" alt="">
-                    </div>
-                    <div class="work__img">
-                        <img src="assets/img/work4.jpg" alt="">
-                    </div>
-                    <div class="work__img">
-                        <img src="assets/img/work5.jpg" alt="">
-                    </div>
-                    <div class="work__img">
-                        <img src="assets/img/work6.jpg" alt="">
-                    </div>
-                </div>
-            </section>
-
-            <!--===== CONTACT =====-->
-            <section class="contact section" id="contact">
-                <h2 class="section-title">Contact</h2>
-
-                <div class="contact__container bd-grid">
-                    <form action="" class="contact__form">
-                        <input type="text" placeholder="Name" class="contact__input">
-                        <input type="mail" placeholder="Email" class="contact__input">
-                        <textarea name="" id="" cols="0" rows="10" class="contact__input"></textarea>
-                        <input type="button" value="Enviar" class="contact__button button">
-                    </form>
-                </div>
-            </section>
-        </main>
-
-        <!--===== FOOTER =====-->
-        <footer class="footer">
-            <p class="footer__title">Jone</p>
-            <div class="footer__social">
-                <a href="https://www.facebook.com//joneluisbulande/" target="_black" class="footer__icon"><i class='bx bxl-facebook' ></i></a>
-                <a href="https://www.instagram.com/jonebulande/" target="_black" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
-                <a href="https://www.twitter.com/jone-bulande/" target="_black" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
-            </div>
-            <p>&#169; 2021 Todos os direitos reservados</p>
-        </footer>
+	</section>
 
 
-        <!--===== SCROLL REVEAL =====-->
-        <script src="https://unpkg.com/scrollreveal"></script>
+	<script src="public/main.js"></script>
 
-        <!--===== MAIN JS =====-->
-        <script src="assets/js/main.js"></script>
-    </body>
+</body>
+
 </html>

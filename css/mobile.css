@@ -1,0 +1,121 @@
+@media (max-width: 720px) {
+	.header {
+		padding: 10px;
+	}
+
+	.header .logo {
+		font-size: 2.5em;
+	}
+
+	.btn-menu {
+		display: block;
+		transform: rotate(0deg);
+		transition: transform .3s;
+	}
+
+	.btn-menu.ativo {
+		transform: rotate(-90deg);
+	}
+
+	.menu {
+		right: 0;
+		top: 58px;
+		width: 60%;
+		height: 100vh;
+		padding-top: 50px;
+		position: absolute;
+		flex-direction: column;
+		transition: transform .3s;
+		transform: translateX(100%);
+		background-color: #a0b8fa;
+	}
+
+	.menu.ativo {
+		transform: translateX(1px);
+	}
+
+
+	.menu li {
+		width: 100%;
+		display: block;
+		text-align: left;
+	}
+
+	.menu li a {
+		display: block;
+		font-size: 1.5em;
+		padding: 15px 10px;
+	}
+	
+	.container {
+		padding: 5px;
+		grid-gap: 10px;
+		flex-wrap: nowrap;
+		align-items: center;
+		flex-direction: column;
+		justify-content: flex-end;
+	}
+	
+	.titulo-principal {
+		margin-top: 2vh;
+		align-items: flex-end;
+	}
+	
+	.titulo-principal h1 {
+		font-size: 2rem;
+	}
+	
+	.btn {
+		margin: 10px 0;
+		font-size: 1em;
+		padding: 10px 25px;
+	}
+
+
+	.img {
+		display: flex;
+		justify-content: center;
+	}
+
+	.container img {
+		width: 50%;
+		margin: 0;
+	}
+
+	.redes-sociais {
+		font-size: .5em;
+		margin-bottom: 2vh;
+		justify-content: center;
+	}
+
+	.redes-sociais img {
+		width: 100%;
+	}
+
+	.habilidades {
+		padding-top: 15vh;
+		grid-template-areas:
+			' titulo '
+			' descricao '
+			' trabalho '
+		;
+	}
+
+	.descricao {
+		padding: 10px;
+	}
+
+	.descricao h3 {
+		font-size: 2.5em;
+		font-weight: bold;
+		margin-bottom: 10px;
+	}
+
+	.descricao p {
+		font-size: 2em;
+	}
+
+	.descricao img {
+		margin: 10px;
+	}
+}

@@ -1,0 +1,54 @@
+/* | animação do conteudo da home | */
+@keyframes slideDown{
+	from{
+		opacity: 0;
+		transform: translateY(-50px);
+	}
+	to{
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+.container {
+	animation: slideDown 1s forwards;
+}
+.container .img {
+	animation: slideDown 3s forwards;
+}
+.redes-sociais {
+	animation: slideDown 4s forwards;
+}
+
+/* | animação do Menu mobile | */
+
+
+
+[data-anime="right"]{
+	opacity: 0;
+	transition: 1s;
+	transform: translateX(-50px);
+}
+[data-anime="right"].ativo{
+	opacity: 1;
+	transform: translateX(0);
+}
+
+[data-anime="left"]{
+	opacity: 0;
+	transition: 1s;
+	transform: translateX(15px);
+}
+[data-anime="left"].ativo{
+	opacity: 1;
+	transform: translateX(0);
+}
+
+[data-anime="up"]{
+	opacity: 0;
+	transition: 1s;
+	transform: translateY(50px);
+}
+[data-anime="up"].ativo{
+	opacity: 1;
+	transform: translateY(0);
+}
