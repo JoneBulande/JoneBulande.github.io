@@ -8,13 +8,13 @@
   font-weight: 300;
   transition: 0.5s;
   box-sizing: border-box;
-  font-family: "Lato", sans-serif;
+  /* font-family: "Lato", sans-serif; */
 }
 
 body {
   /* color: #fff;
   background-color: #124; */
-  font-family: "Roboto", sans-serif;
+  font-family: 'Special Elite';
 }
 
 ul,
