@@ -39,10 +39,13 @@
   </main>
 
   <footer class="center">
-    <p>&copy; 2023 J1. Todos os direitos reservados.</p>
+    <p>&copy; <span id="ano-atual"></span> J1. Todos os direitos reservados.</p>
     <p>Designed with ♥ by <a href="https://github.com/JoneBulande">Jone Bulande</a></p>
   </footer>
 
+  <script>
+    document.getElementById('ano-atual').textContent = new Date().getFullYear();
+  </script>
 </body>
 
 </html>
