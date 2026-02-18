@@ -1,874 +1,1454 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W03MWY6E1N"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+  <title>Jone Bulande — Flutter Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --flutter-blue: #54C5F8;
+      --flutter-dark: #02539A;
+      --flutter-teal: #45D1C8;
+      --flutter-purple: #7C4DFF;
+      --bg: #0A0E1A;
+      --surface: #111827;
+      --surface2: #1A2235;
+      --text: #E8EEFF;
+      --text-dim: #7B8DB0;
+      --accent: #54C5F8;
+      --accent2: #45D1C8;
+      --card-border: rgba(84,197,248,0.15);
+      --glow: rgba(84,197,248,0.25);
+    }
 
-    gtag('config', 'G-W03MWY6E1N');
-  </script>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  <link rel="icon" href="/assets/img/perfil-Jone_Bulande.png">
+    html { scroll-behavior: smooth; }
 
-  <!--==================== UNICONS ====================-->
-  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!--==================== SWIPER CSS ====================-->
-  <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
 
-  <!--==================== CSS ====================-->
-  <link rel="stylesheet" href="assets/css/styles.css">
+    /* ─── NOISE TEXTURE OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.4;
+    }
 
-  <title>Jone Bulande - Mobile Developer</title>
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--flutter-blue); border-radius: 2px; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 4rem;
+      background: rgba(10,14,26,0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .nav-logo {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.1rem;
+      color: var(--flutter-blue);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-logo span { color: var(--text-dim); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--flutter-blue);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--flutter-blue); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ─── HERO ─── */
+    #home {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 4rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Animated grid background */
+    #home::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(84,197,248,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(84,197,248,0.04) 1px, transparent 1px);
+      background-size: 50px 50px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    /* Glowing orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .orb-1 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(84,197,248,0.15), transparent);
+      top: 10%; right: 5%;
+      animation-delay: 0s;
+    }
+
+    .orb-2 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(124,77,255,0.12), transparent);
+      bottom: 20%; left: 10%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-30px) scale(1.05); }
+    }
+
+    .hero-content { z-index: 1; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      background: rgba(84,197,248,0.1);
+      border: 1px solid rgba(84,197,248,0.3);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-family: 'Space Mono', monospace;
+      color: var(--flutter-blue);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.6s ease both;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--flutter-blue);
+      border-radius: 50%;
+      animation: pulse 2s ease infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.5); }
+    }
+
+    h1.hero-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(3rem, 5vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+      animation: fadeInUp 0.6s 0.1s ease both;
+    }
+
+    h1.hero-name span {
+      background: linear-gradient(135deg, var(--flutter-blue), var(--flutter-teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-role {
+      font-family: 'Space Mono', monospace;
+      font-size: 1rem;
+      color: var(--text-dim);
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.6s 0.2s ease both;
+    }
+
+    .hero-role .highlight {
+      color: var(--flutter-teal);
+      -webkit-text-fill-color: var(--flutter-teal);
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      max-width: 440px;
+      margin-bottom: 2.5rem;
+      animation: fadeInUp 0.6s 0.3s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.6s 0.4s ease both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.8rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--flutter-blue), var(--flutter-teal));
+      color: var(--bg);
+      font-weight: 700;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(84,197,248,0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--flutter-blue);
+      border: 1px solid rgba(84,197,248,0.4);
+    }
+
+    .btn-outline:hover {
+      background: rgba(84,197,248,0.08);
+      border-color: var(--flutter-blue);
+      transform: translateY(-2px);
+    }
+
+    /* ─── HERO VISUAL (Phone mockup) ─── */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+      animation: fadeInRight 0.8s 0.3s ease both;
+    }
+
+    .phone-mockup {
+      position: relative;
+      width: 260px;
+    }
+
+    .phone-frame {
+      width: 260px;
+      height: 520px;
+      background: var(--surface2);
+      border-radius: 40px;
+      border: 2px solid rgba(84,197,248,0.3);
+      position: relative;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 8px rgba(84,197,248,0.05),
+        0 30px 80px rgba(0,0,0,0.5),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+
+    .phone-notch {
+      width: 80px; height: 24px;
+      background: var(--bg);
+      border-radius: 0 0 16px 16px;
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .phone-screen {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, #0D1B2A 0%, #0A0E1A 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1.5rem;
+      gap: 1rem;
+    }
+
+    .flutter-logo-phone {
+      width: 60px; height: 60px;
+      margin-bottom: 0.5rem;
+    }
+
+    .code-line {
+      width: 100%;
+      height: 10px;
+      border-radius: 5px;
+      background: rgba(84,197,248,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .code-line::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(84,197,248,0.3), transparent);
+      animation: shimmer 2.5s ease infinite;
+    }
+
+    .code-line:nth-child(2) { width: 80%; animation-delay: 0.3s; }
+    .code-line:nth-child(3) { width: 90%; }
+    .code-line:nth-child(4) { width: 65%; }
+    .code-line:nth-child(5) { width: 75%; }
+    .code-line:nth-child(6) { width: 85%; }
+    .code-line.accent { background: rgba(84,197,248,0.2); }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 200%; }
+    }
+
+    .phone-glow {
+      position: absolute;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(84,197,248,0.2), transparent 70%);
+      bottom: -50px; left: 50%;
+      transform: translateX(-50%);
+      filter: blur(30px);
+      pointer-events: none;
+    }
+
+    /* Floating tech badges */
+    .tech-badge {
+      position: absolute;
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 0.5rem 0.8rem;
+      font-size: 0.7rem;
+      font-family: 'Space Mono', monospace;
+      color: var(--flutter-blue);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .tech-badge svg { width: 14px; height: 14px; }
+
+    .badge-flutter { top: 15%; left: -60px; animation-delay: 0s; }
+    .badge-dart    { top: 45%; right: -70px; animation-delay: 2s; }
+    .badge-android { bottom: 25%; left: -65px; animation-delay: 4s; }
+
+    /* ─── STATS ─── */
+    .stats-bar {
+      background: var(--surface);
+      border-top: 1px solid var(--card-border);
+      border-bottom: 1px solid var(--card-border);
+      padding: 2.5rem 4rem;
+      display: flex;
+      justify-content: center;
+      gap: 6rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    .stat-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stat-number {
+      font-family: 'Space Mono', monospace;
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--flutter-blue), var(--flutter-teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.3rem;
+    }
+
+    /* ─── SECTIONS ─── */
+    section {
+      padding: 6rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--flutter-blue);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .section-tag::before {
+      content: '';
+      width: 30px; height: 1px;
+      background: var(--flutter-blue);
+    }
+
+    h2.section-title {
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    /* ─── ABOUT ─── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+
+    .about-text p {
+      color: var(--text-dim);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p strong {
+      color: var(--flutter-blue);
+      font-weight: 500;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+
+    .tech-pill {
+      padding: 0.35rem 0.9rem;
+      background: rgba(84,197,248,0.08);
+      border: 1px solid rgba(84,197,248,0.2);
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-family: 'Space Mono', monospace;
+      color: var(--flutter-blue);
+      transition: all 0.3s;
+    }
+
+    .tech-pill:hover {
+      background: rgba(84,197,248,0.15);
+      border-color: rgba(84,197,248,0.5);
+      transform: translateY(-2px);
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .profile-card {
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--flutter-blue), var(--flutter-teal), var(--flutter-purple));
+    }
+
+    .profile-avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      border: 2px solid rgba(84,197,248,0.4);
+      margin-bottom: 1rem;
+      object-fit: cover;
+      background: var(--surface2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+
+    .profile-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .profile-sub {
+      font-size: 0.8rem;
+      color: var(--flutter-blue);
+      font-family: 'Space Mono', monospace;
+      margin-bottom: 1.5rem;
+    }
+
+    .profile-info-row {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    .profile-info-row:last-child { border-bottom: none; }
+
+    .info-icon {
+      width: 28px; height: 28px;
+      background: rgba(84,197,248,0.1);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      flex-shrink: 0;
+    }
+
+    /* ─── APPS / PORTFOLIO ─── */
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .app-card {
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.8rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      cursor: pointer;
+    }
+
+    .app-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, var(--card-glow, rgba(84,197,248,0.05)), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .app-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(84,197,248,0.4);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 0 1px rgba(84,197,248,0.1);
+    }
+
+    .app-card:hover::before { opacity: 1; }
+
+    .app-card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .app-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--flutter-blue), var(--flutter-teal));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .app-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 14px; }
+
+    .app-meta { flex: 1; }
+
+    .app-name {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .app-category {
+      font-size: 0.72rem;
+      font-family: 'Space Mono', monospace;
+      color: var(--flutter-teal);
+    }
+
+    .app-store-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.7rem;
+      background: rgba(69,209,200,0.1);
+      border: 1px solid rgba(69,209,200,0.25);
+      border-radius: 100px;
+      font-size: 0.68rem;
+      color: var(--flutter-teal);
+      font-family: 'Space Mono', monospace;
+    }
+
+    .app-desc {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+    }
+
+    .app-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .app-tag {
+      padding: 0.2rem 0.6rem;
+      background: rgba(124,77,255,0.1);
+      border: 1px solid rgba(124,77,255,0.2);
+      border-radius: 4px;
+      font-size: 0.68rem;
+      color: #A78BFA;
+      font-family: 'Space Mono', monospace;
+    }
+
+    .app-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .app-downloads {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+
+    .app-downloads strong {
+      color: var(--flutter-blue);
+    }
+
+    .app-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--flutter-blue);
+      text-decoration: none;
+      font-weight: 500;
+      transition: gap 0.3s;
+    }
+
+    .app-link:hover { gap: 0.7rem; }
+
+    /* GitHub projects */
+    .github-projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .gh-card {
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.4rem;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: block;
+    }
+
+    .gh-card:hover {
+      border-color: rgba(84,197,248,0.35);
+      transform: translateY(-3px);
+    }
+
+    .gh-card-top {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .gh-icon {
+      color: var(--text-dim);
+      font-size: 1rem;
+    }
+
+    .gh-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--flutter-blue);
+      font-family: 'Space Mono', monospace;
+    }
+
+    .gh-desc {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+      margin-bottom: 0.8rem;
+    }
+
+    .gh-lang {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      color: var(--text-dim);
+    }
+
+    .lang-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--flutter-blue);
+    }
+
+    .lang-dot.dart { background: #00B4D8; }
+    .lang-dot.js   { background: #F7DF1E; }
+    .lang-dot.ts   { background: #3178C6; }
+
+    /* ─── SERVICES ─── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s;
+    }
+
+    .service-card:hover {
+      border-color: rgba(84,197,248,0.4);
+      transform: translateY(-4px);
+    }
+
+    .service-number {
+      font-family: 'Space Mono', monospace;
+      font-size: 3rem;
+      font-weight: 700;
+      color: rgba(84,197,248,0.07);
+      position: absolute;
+      top: 1rem; right: 1.5rem;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .service-icon-wrap {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, rgba(84,197,248,0.15), rgba(69,209,200,0.15));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .service-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+    }
+
+    .service-desc {
+      font-size: 0.83rem;
+      color: var(--text-dim);
+      line-height: 1.65;
+    }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      padding: 4rem;
+      max-width: 1200px;
+      margin: 0 auto 4rem;
+    }
+
+    .contact-wrapper {
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 4rem;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .contact-wrapper::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--flutter-blue), var(--flutter-teal), var(--flutter-purple));
+    }
+
+    .contact-info-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      border-radius: 12px;
+      background: rgba(84,197,248,0.04);
+      border: 1px solid rgba(84,197,248,0.08);
+      margin-bottom: 1rem;
+      transition: all 0.3s;
+    }
+
+    .contact-info-item:hover {
+      background: rgba(84,197,248,0.08);
+      border-color: rgba(84,197,248,0.2);
+    }
+
+    .contact-icon {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, rgba(84,197,248,0.2), rgba(69,209,200,0.2));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-label {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .contact-value {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-link {
+      width: 42px; height: 42px;
+      background: var(--surface2);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    .social-link:hover {
+      background: rgba(84,197,248,0.1);
+      border-color: rgba(84,197,248,0.4);
+      color: var(--flutter-blue);
+      transform: translateY(-3px);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      text-align: center;
+      padding: 2rem 4rem;
+      border-top: 1px solid var(--card-border);
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      font-family: 'Space Mono', monospace;
+    }
+
+    footer span { color: var(--flutter-blue); }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 2rem; }
+      .nav-links { display: none; }
+
+      #home {
+        grid-template-columns: 1fr;
+        padding: 7rem 2rem 3rem;
+        text-align: center;
+      }
+
+      .hero-desc { margin: 0 auto 2rem; }
+      .hero-actions { justify-content: center; }
+      .hero-visual { margin-top: 3rem; }
+      .badge-flutter, .badge-dart, .badge-android { display: none; }
+
+      .stats-bar { padding: 2rem; gap: 2.5rem; flex-wrap: wrap; }
+      section { padding: 4rem 2rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .contact-wrapper { grid-template-columns: 1fr; gap: 2rem; padding: 2rem; }
+      #contact { padding: 2rem; }
+    }
+  </style>
 </head>
-
 <body>
-  <!--==================== HEADER ====================-->
-  <header class="header" id="header">
-    <nav class="nav container">
-      <a href="#" class="nav__logo">Jone</a>
-      <div class="nav__menu" id="nav-menu">
-        <ul class="nav__list grid">
-          <li class="nav__item">
-            <a href="#home" class="nav__link active-link">
-              <i class="uil uil-estate nav__icon"></i> Home
-            </a>
-          </li>
-          <li class="nav__item">
-            <a href="#about" class="nav__link">
-              <i class="uil uil-user nav__icon"></i> Sobre
-            </a>
-          </li>
-          <li class="nav__item">
-            <a href="#skills" class="nav__link">
-              <i class="uil uil-file-alt nav__icon"></i> Skills
-            </a>
-          </li>
-          <li class="nav__item">
-            <a href="#services" class="nav__link">
-              <i class="uil uil-briefcase-alt nav__icon"></i> Serviços
-            </a>
-          </li>
-          <li class="nav__item">
-            <a href="#portfolio" class="nav__link">
-              <i class="uil uil-scenery nav__icon"></i> Portfólio
-            </a>
-          </li>
-          <li class="nav__item">
-            <a href="#contact" class="nav__link">
-              <i class="uil uil-estate nav__icon"></i> Contato
-            </a>
-          </li>
-        </ul>
-        <i class="uil uil-times nav__close" id="nav-close"></i>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#home" class="nav-logo">jone<span>.dev</span></a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">Sobre</a></li>
+      <li><a href="#apps">Apps</a></li>
+      <li><a href="#services">Serviços</a></li>
+      <li><a href="#contact">Contato</a></li>
+    </ul>
+    <a href="https://wa.me/+258870364565" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.8rem;">
+      Contratar →
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home" style="max-width: 100%; padding-top: 8rem;">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">DISPONÍVEL PARA PROJETOS</div>
+      <h1 class="hero-name">Jone<br><span>Bulande</span></h1>
+      <p class="hero-role">
+        <span class="highlight">Flutter</span> / Mobile Developer
+      </p>
+      <p class="hero-desc">
+        Desenvolvo aplicativos <strong>cross-platform</strong> para Android e iOS com Flutter. 
+        Foco em performance, UI refinada e experiência do utilizador de qualidade.
+      </p>
+      <div class="hero-actions">
+        <a href="https://wa.me/+258870364565" class="btn btn-primary">
+          Entre em contato ↗
+        </a>
+        <a href="#apps" class="btn btn-outline">
+          Ver Apps ↓
+        </a>
       </div>
-
-      <div class="nav__btns">
-        <!--Theme change button-->
-        <i class="uil uil-moon change-theme" id="theme-button"></i>
-
-        <div class="nav__toggle" id="nav-toggle">
-          <i class="uil uil-apps"></i>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-  <!--==================== MAIN ====================-->
-  <main class="main">
-    <!--==================== HOME ====================-->
-    <section class="home section" id="home">
-      <div class="home__container container grid">
-        <div class="home__content grid">
-          <div class="home__social">
-            <a href="https://github.com/JoneBulande" target="_blank" class="home__social-icon">
-              <i class="uil uil-github-alt"></i>
-            </a>
-            <a href="https://instagram.com/JoneBulande" target="_blank" class="home__social-icon">
-              <i class="uil uil-instagram"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/Jone-Bulande/" target="_blank" class="home__social-icon">
-              <i class="uil uil-linkedin-alt"></i>
-            </a>
-          </div>
-
-          <div class="home__img">
-            <svg class="home__blob" viewBox="0 0 200 187" xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink">
-              <mask id="mask0" mask-type="alpha">
-                <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547
-            130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775
-            97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666
-            0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z" />
-              </mask>
-              <g mask="url(#mask0)">
-                <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346
-            165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403
-            129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028
-            -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z" />
-                <image class="home__blob-img" x="12" y="18" xlink:href="assets/img/perfil-Jone_Bulande.png" />
-              </g>
-            </svg>
-
-          </div>
-          <div class="home__data">
-            <h1 class="home__title">Jone Bulande</h1>
-            <h3 class="home__subtitle">Mobile Developer</h3>
-            <p class="home__description">
-              Tenho experiência em desenvolvimento de aplicativos Mobile para android e ios usando o flutter. Produção de trabalho de qualidade.
-            </p>
-            <a href="https://wa.me/+258870364565" class="button button--flex">
-              Entre em contato <i class="uil uil-message button__icon"></i>
-            </a>
-          </div>
-        </div>
-
-        <div class="home_scroll">
-          <a href="#about" class="home__scroll-button button--flex">
-            <i class="uil uil-mouse-alt home__scroll-mouse"></i>
-            <span class="home__scroll-name">Scroll down</span>
-            <i class="uil uil-arrow-down homw__scroll-arrow"></i>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!--==================== ABOUT ====================-->
-    <section class="about section" id="about">
-      <h2 class="section__title">Sobre Mim</h2>
-      <span class="section__subtitle">Minha introdução</span>
-
-      <div class="about__container container grid">
-        <img src="./assets/img/about-Jone_Bulande.png" alt="about" class="about__img">
-
-        <div class="about__data">
-          <p class="about__description">
-            Desenvolvedor Mobile, com amplo conhecimento e anos de experiência, atuando em tecnologia de desenvolvimento cross-platform, entregando um trabalho de qualidade.
-          </p>
-          <div class="about__info">
-            <div>
-              <span class="about__info-title">02+</span>
-              <span class="about__info-name">Anos de<br> experiência<span>
-            </div>
-            <div>
-              <span class="about__info-title">5+</span>
-              <span class="about__info-name">Projetos <br> completos</span>
-            </div>
-            <div>
-              <span class="about__info-title">03+</span>
-              <span class="about__info-name">Empresas <br> trabalhadas</span>
-            </div>
-          </div>
-
-          <div class="about__buttons">
-            <a href="./assets/pdf/Jone_Bulande.pdf" class="button button--flex">
-              Download CV <i class="uil uil-download-alt button__icon"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </section>
-
-    <!--==================== SKILLS ====================-->
-    
-<!--     
-    <section class="skills section" id="skills">
-      <h2 class="section__title">Habilidades</h2>
-      <span class="section__subtitle">Nível de conhecimento técnico</span>
-
-      <div class="skills__container container grid">
-        ====================== SKILLS 1 =============================-->
-        <!-- 
-        <div>
-          <div class="skills__content skills__open">
-            <div class="skills__header">
-              <i class="uil uil-brackets-curly skills__icon"></i>
-
-              <div>
-                <h1 class="skills__title">Desenvolvimento Backend</h1>
-                <span class="skills__subtitle">Mais de 2 anos</span>
-              </div>
-
-              <i class="uil uil-angle-down skills__arrow"></i>
-            </div>
-
-            <div class="skills__list grid">
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name">NodeJs</h3>
-                  <div class="skills__number">82%</div>
-                </div>
-                <div class="skills__bar">
-                  <div class="skills__percentage skills__nodejs"></div>
-                </div>
-              </div>
-
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name">ExpressJs</h3>
-                  <div class="skills__number">90%</div>
-                </div>
-                <div class="skills__bar">
-                  <div class="skills__percentage skills__expressjs"></div>
-                </div>
-              </div>
-
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name">PHP</h3>
-                  <div class="skills__number">25%</div>
-                </div>
-                <div class="skills__bar">
-                  <div class="skills__percentage skills__php"></div>
-                </div>
-              </div>
-
-            </div>
-          </div> -->
-
-          <!--====================== SKILLS 2 =============================-->
-          <!-- <div class="skills__content skills__close">
-            <div class="skills__header">
-              <i class="uil uil-brackets-curly skills__icon"></i>
-
-              <div>
-                <h1 class="skills__title">Desenvolvimento Frontend</h1>
-                <span class="skills__subtitle">Mais de 3 anos</span>
-              </div>
-
-              <i class="uil uil-angle-down skills__arrow"></i>
-            </div>
-
-            <div class="skills__list grid">
-
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name">HTML5</h3>
-                  <div class="skills__number">95%</div>
-                </div>
-                <div class="skills__bar">
-                  <div class="skills__percentage skills__html"></div>
-                </div>
-              </div>
-
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name">CSS3</h3>
-                  <div class="skills__number">74%</div>
-                </div>
-                <div class="skills__bar">
-                  <div class="skills__percentage skills__css"></div>
-                </div>
-              </div>
-
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name">Javascript</h3>
-                  <div class="skills__number">80%</div>
-                </div>
-                <div class="skills__bar">
-                  <div class="skills__percentage skills__javascript"></div>
-                </div>
-              </div>
-
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name">React.js</h3>
-                  <div class="skills__number">50%</div>
-                </div>
-                <div class="skills__bar">
-                  <div class="skills__percentage skills__react"></div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div> -->
-
-        <!--====================== SKILLS 3 =============================-->
-        <!-- 
-        <div>
-          <div class="skills__content skills__close">
-            <div class="skills__header">
-              <i class="uil uil-brackets-curly skills__icon"></i>
-
-              <div>
-                <h1 class="skills__title">Database Design</h1>
-                <span class="skills__subtitle">Mais de 1 Ano</span>
-              </div>
-
-              <i class="uil uil-angle-down skills__arrow"></i>
-            </div>
-
-            <div class="skills__list grid">
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name">MongoDB</h3>
-                  <div class="skills__number">80%</div>
-                </div>
-                <div class="skills__bar">
-                  <div class="skills__percentage skills__mongodb"></div>
-                </div>
-              </div>
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name">Mysql</h3>
-                  <div class="skills__number">31%</div>
-                </div>
-                <div class="skills__bar">
-                  <div class="skills__percentage skills__mysql"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
-    <!-- </section>  -->
-  
-
-    <!--==================== QUALIFICATION ====================-->
-    <!-- 
-      <section class="qualification section">
-        <h2 class="section__title">Qualifications</h2>
-        <div class="section__subtitle">My personal journey</div>
-
-        <div class="qualification__container container">
-          <div class="qualification__tabs">
-            <div class="qualification__button button--flex qualification__active" data-target="#education">
-              <i class="uil uil-graduation-cap qualification__icon"></i>
-              Education
-            </div>
-
-            <div class="qualification__button button--flex" data-target="#work">
-              <i class="uil uil-briefcase-alt qualification__icon"></i>
-              Work
-            </div>
-          </div>
-        <div class="qualification__sections">
-
-    -->
-    
-     <!--===============================QUALIFICATION CONTENT 1 ===========================-->
-    <!-- <div class="qualification__content qualification__active" data-content id="education"> -->
-    <!--===============================QUALIFICATION 1 ===========================-->
-    <!-- <div class="qualification__data">
-              <div>
-                <h3 class="qualification__title">NodeJS Tutorial and Projects Course</h3>
-                <span class="qualification__subtitle">Udemy</span>
-                <div class="qualification__calendar">
-                  <i class="uil uil-calendar-alt"></i>
-                  February 2022 - March, 2022
-                </div>
-              </div>
-
-              <div>
-                <span class="qualification__rounder"></span>
-                <span class="qualification__line"></span>
-              </div>
-            </div> -->
-
-    <!--===============================QUALIFICATION 2 ===========================-->
-    <!-- <div class="qualification__data">
-              <div></div>
-              <div>
-                <span class="qualification__rounder"></span>
-                <span class="qualification__line"></span>
-              </div>
-
-              <div>
-                <h3 class="qualification__title">Javascript</h3>
-                <span class="qualification__subtitle">Origamid</span>
-                <div class="qualification__calendar">
-                  <i class="uil uil-calendar-alt"></i>
-                  January 2022 - February, 2022
-                </div>
-              </div>
-
-
-            </div> -->
-
-    <!--===============================QUALIFICATION 3 ===========================-->
-    <!-- <div class="qualification__data">
-              <div>
-                <h3 class="qualification__title">Ensino Secundário Completo</h3>
-                <span class="qualification__subtitle">Escola comunitária armando Emilio Guebuza</span>
-                <div class="qualification__calendar">
-                  <i class="uil uil-calendar-alt"></i>
-                  December 2019
-                </div>
-              </div>
-
-              <div>
-                <span class="qualification__rounder"></span>
-              </div>
-            </div>
-          </div> -->
-
-    <!--===============================QUALIFICATION CONTENT 2 ===========================-->
-    <!-- <div class="qualification__content" data-content id="work"> -->
-    <!--===============================QUALIFICATION 1 =========================== -->
-    
-    <!-- <div class="qualification__data">
-              <div>
-                <h3 class="qualification__title">Web Development</h3>
-                <span class="qualification__subtitle">
-                  <a href="https://sequoia.co.mz/" target="_blank">Sequoia</a>
-                </span>
-                <div class="qualification__calendar">
-                  <i class="uil uil-calendar-alt"></i>
-                  September, 2019 - July, 2021
-                </div>
-              </div>
-
-              <div>
-                <span class="qualification__rounder"></span>
-                <span class="qualification__line"></span>
-              </div>
-            </div> -->
-
-    <!--===============================QUALIFICATION 2 ===========================-->
-    <!-- <div class="qualification__data">
-              <div></div>
-              <div>
-                <span class="qualification__rounder"></span>
-                <span class="qualification__line"></span>
-              </div>
-
-              <div>
-                <h3 class="qualification__title">
-
-                  <a class="qualification__tech" href="#" target="_blank">NodeJs</a>
-                  &
-                  <a class="qualification__tech" href="#" target="_blank">ReactJs</a>
-                  Full-stack Developer
-                </h3>
-                <span class="qualification__subtitle">
-                  <a href="https://microcredit-01.netlify.app/" target="_blank">Microcredit</a>
-                </span>
-                <div class="qualification__calendar">
-                  <i class="uil uil-calendar-alt"></i>
-                  October, 2020 - running
-                </div>
-              </div>
-            </div> -->
-
-    <!--===============================QUALIFICATION 3 ===========================-->
-    <!-- <div class="qualification__data">
-              <div>
-                <h3 class="qualification__title">Software Development</h3>
-                <span class="qualification__subtitle">
-                  <a href="https://www.reddotdigital.net/" target="_blank">Red.Digital IT</a>
-                  <small>(A subsidiary of Robi Axiata Limited)</small></span>
-                <div class="qualification__calendar">
-                  <i class="uil uil-calendar-alt"></i>
-                  August, 2021 - Running
-                </div>
-              </div>
-
-              <div>
-                <span class="qualification__rounder"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
-
-    <!--==================== SERVICES ====================-->
-    <section class="services section" id="services">
-      <h2 class="section__title">Serviços</h2>
-      <span class="section__subtitle">O que eu ofereço</span>
-
-      <div class="services__container container grid">
-        <!--===================== SERVICES 1 ====================-->
-        <div class="services__content">
-          <div>
-            <i class="uil uil-apps services__icon"></i>
-            <h3 class="services__title">Desenvolvimento <br> Mobile - cross-platform </h3>
-
-            <span class="button button--flex button--small button--link services__button">
-              Ver Mais
-              <i class="uil uil-arrow-right button__icon"></i>
-            </span>
-
-            <div class="services__modal">
-              <div class="services__modal-content">
-                <h4 class="services__modal-title">Desenvolvimento <br> Mobile</h4>
-                <i class="uil uil-times services__modal-close"></i>
-
-                <ul class="services__modal-services grid">
-                  <li class="services__modal-service">
-                    <i class="uil uil-check-circle services__modal-icon"></i>
-                    <p>Desenvolvimento de Aplicativos Android</p>
-                  </li>
-
-                  <li class="services__modal-service">
-                    <i class="uil uil-check-circle services__modal-icon"></i>
-                    <p>Desenvolvimento de Aplicativos IOS</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!--===================== SERVICES 2 ====================-->
-        <div class="services__content">
-          <div>
-            <i class="uil uil-web-grid services__icon"></i>
-            <h3 class="services__title">Deploy nas <br> Lojas</h3>
-
-            <span class="button button--flex button--small button--link services__button">
-              Ver Mais
-              <i class="uil uil-arrow-right button__icon"></i>
-            </span>
-
-            <div class="services__modal">
-              <div class="services__modal-content">
-                <h4 class="services__modal-title">Deploy nas <br> Lojas</h4>
-                <i class="uil uil-times services__modal-close"></i>
-
-                <ul class="services__modal-services grid">
-                  <li class="services__modal-service">
-                    <i class="uil uil-check-circle services__modal-icon"></i>
-                    <p>Deploy de apps na AppStore</p>
-                  </li>
-
-                  <li class="services__modal-service">
-                    <i class="uil uil-check-circle services__modal-icon"></i>
-                    <p>Deploy de apps na PlayStore</p>
-                  </li>
-                  
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!--===================== SERVICES 3 ====================-->
-        <div class="services__content">
-          <div>
-            <i class="uil uil-pen services__icon"></i>
-            <h3 class="services__title">Projetista de <br>Banco de dados</h3>
-
-            <span class="button button--flex button--small button--link services__button">
-              Ver Mais
-              <i class="uil uil-arrow-right button__icon"></i>
-            </span>
-
-            <div class="services__modal">
-              <div class="services__modal-content">
-                <h4 class="services__modal-title">Projetista de <br>Banco de dados</h4>
-                <i class="uil uil-times services__modal-close"></i>
-
-                <ul class="services__modal-services grid">
-                  <li class="services__modal-service">
-                    <i class="uil uil-check-circle services__modal-icon"></i>
-                    <p>Eu projeto banco de dados.</p>
-                  </li>
-
-                  <li class="services__modal-service">
-                    <i class="uil uil-check-circle services__modal-icon"></i>
-                    <p>Eu estruturo dados por usuário.</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!--==================== PORTFOLIO ====================-->
-    <section class="portfolio section" id="portfolio">
-      <h2 class="section__title">Portfólio</h2>
-      <span class="section__subtitle">Trabalhos mais recentes</span>
-
-      <div class="portfolio__container container swiper-container">
-        <div class="swiper-wrapper">
-          <!--======================== PORTFOLIO 1 =============-->
-
-          <div class="portfolio__content grid swiper-slide">
-            <img src="assets/img/gulera.png" alt="" class="portfolio__img">
-
-            <div class="portfolio__data">
-              <h3 class="portfolio__title">Gulera</h3>
-              <p class="portfolio__description">
-                Gulera é a recriação em Flutter da interface do app Ignite Gym, originalmente desenvolvido num curso da Rocketseat em React Native.
-              </p>
-              <a href="https://github.com/JoneBulande/gulera" target="_blank"
-                class="button button--flex button--small portfolio__button">
-                Visitar site
-                <i class="uil uil-arrow-right button__icon"></i>
-              </a>
-            </div>
-          </div>
-          
-        
-          <!--======================== PORTFOLIO 2 =============-->
-          <div class="portfolio__content grid swiper-slide">
-            <img src="assets/img/MyLinks-Mockup-by-Jone_Bulande.png" alt="" class="portfolio__img">
-
-            <div class="portfolio__data">
-              <h3 class="portfolio__title">my Links</h3>
-              <p class="portfolio__description">
-                Armazene, organize e acesse links importantes de forma rápida e prática
-              </p>
-              <a href="#" target="_blank"
-                class="button button--flex button--small portfolio__button">
-                Visitar site
-                <i class="uil uil-arrow-right button__icon"></i>
-              </a>
-            </div>
-          </div>
-          
-          <!--======================== PORTFOLIO 2 =============-->
-          <div class="portfolio__content grid swiper-slide">
-            <img src="assets/img/MyPills-Mockup-by-Jone_Bulande.png" alt="" class="portfolio__img">
-
-            <div class="portfolio__data">
-              <h3 class="portfolio__title">My Pills</h3>
-              <p class="portfolio__description">
-                Com o My Pills, você pode organizar facilmente seus horários de medicação e nunca mais esquecer de tomar seus remédios.
-              </p>
-              <a href="#" target="_blank"
-                class="button button--flex button--small portfolio__button">
-                Visitar site
-                <i class="uil uil-arrow-right button__icon"></i>
-              </a>
-            </div>
-          </div>
-
-          <!--======================== PORTFOLIO 3 =============-->
-          
-            <div class="portfolio__content grid swiper-slide">
-            <img src="assets/img/DadosApp_Mockups-Jone_Bulande.png" alt="" class="portfolio__img">
-
-            <div class="portfolio__data">
-              <h3 class="portfolio__title">Dados</h3>
-              <p class="portfolio__description">
-                Este aplicativo simples foi desenvolvido em Flutter e simula o lançamento de dois dados. 
-                Ao clicar no botão "Lançar", duas faces aleatórias são geradas, uma para cada dado.
-              </p>
-              <a href="https://github.com/JoneBulande/FlutterApp-Dados" target="_blank"
-                class="button button--flex button--small portfolio__button">
-                Visitar Projeto
-                <i class="uil uil-arrow-right button__icon"></i>
-              </a>
-            </div>
-          </div> 
-        
-
-
-          <!--======================== PORTFOLIO 4 =============-->
-          <!-- 
-          <div class="portfolio__content grid swiper-slide">
-            <img src="assets/img/JoneCare-Mockup-by-Jone_Bulande.png" alt="" class="portfolio__img">
-
-            <div class="portfolio__data">
-              <h3 class="portfolio__title">JoneCare</h3>
-              <p class="portfolio__description">
-                JoneCare é uma página institucional no formato One Page, responsiva, para usar em diversos tipos de
-                micro, pequena e média empresas. Contém as seguintes seções: Header, Navigation, Home, Sobre, Serviços,
-                Depoimentos, Contato e Footer
-              </p>
-              <a href="https://jonebulande.github.io/JoneCare/" target="_blank"
-                class="button button--flex button--small portfolio__button">
-                Visitar Site
-                <i class="uil uil-arrow-right button__icon"></i>
-              </a>
-            </div>
-          </div>
-          -->
-
-          <!--======================== PORTFOLIO 5 =============-->
-          <div class="portfolio__content grid swiper-slide">
-            <img src="assets/img/NodeJs-CRUD-API-Mockup-by-Jone_Bulande.png" alt="" class="portfolio__img">
-
-            <div class="portfolio__data">
-              <h3 class="portfolio__title">NodeJs Rest API</h3>
-              <p class="portfolio__description">
-                NodeJs (ExpressJs) - CRUD REST API
-              </p>
-              <a href="https://github.com/JoneBulande/NodeJs-CRUD-API" target="_blank"
-                class="button button--flex button--small portfolio__button">
-                Ver repositório
-                <i class="uil uil-arrow-right button__icon"></i>
-              </a>
-            </div>
-          </div>
-
-        </div>
-        <!--============ Add Arrows =============-->
-        <div class="swiper-button-next">
-          <i class="uil uil-angle-right-b swiper-portfolio-icon"></i>
-        </div>
-        <div class="swiper-button-prev">
-          <i class="uil uil-angle-left-b swiper-portfolio-icon"></i>
-        </div>
-
-        <!--============ Add Pagination =============-->
-        <div class="swiper-pagination"></div>
-      </div>
-    </section>
-
-    <!--==================== PROJECT IN MIND ====================-->
-    <section class="project section">
-      <div class="project__bg">
-        <div class="project__container container grid">
-          <div class="project__data">
-            <h2 class="project__title">Você tem um novo projeto?</h2>
-            <p class="project__description">Entre em contato agora e obtenha um desconto de 5% no seu novo projeto!</p>
-            <a href="https://wa.me/+258870364565" target="_blank" class="button button--flex button--white">
-              Entre em contato
-              <i class="uil uil-message project__icon button__icon"></i>
-            </a>
-          </div>
-
-          <img src="assets/img/project-Jone_Bulande.png" alt="" class="project__img">
-        </div>
-      </div>
-
-    </section>
-
-    <!--==================== TESTIMONIAL ====================-->
-    <section class="testimonial section">
-      <!--=======This feature is skipped for now========-->
-    </section>
-
-    <!--==================== CONTACT ME ====================-->
-    <section class="contact section" id="contact">
-      <h2 class="section__title">Contato</h2>
-      <span class="section__subtitle">Entre em contato comigo</span>
-
-      <div class="contact__container container grid">
-        <div>
-          <div class="contact__information">
-            <i class="uil uil-phone contact__icon"></i>
-
-            <div>
-              <h3 class="contact__title">Call Me</h3>
-              <span class="contact__subtitle">+258 870364565</span>
-            </div>
-          </div>
-
-          <div class="contact__information">
-            <i class="uil uil-envelope contact__icon"></i>
-
-            <div>
-              <h3 class="contact__title">Email</h3>
-              <span class="contact__subtitle">JoneBulande@gmail.com</span>
-            </div>
-          </div>
-
-          <div class="contact__information">
-            <i class="uil uil-map-marker contact__icon"></i>
-
-            <div>
-              <h3 class="contact__title">Location</h3>
-              <span class="contact__subtitle">Maputo, Moçambique</span>
-            </div>
-          </div>
-
-          <!-- <form action="" class="contact__form grid">
-            <div class="contact__inputs grid">
-              <div class="contact__content">
-                <label for="name" class="contact__label">Name</label>
-                <input type="text" id="name" class="contact__input">
-              </div>
-
-              <div class="contact__content">
-                <label for="email" class="contact__label">Email</label>
-                <input type="email" id="email" class="contact__input">
-              </div>
-            </div>
-
-            <div class="contact__content">
-              <label for="project-contact" class="contact__label">Project</label>
-              <input type="text" id="project-contact" class="contact__input">
-            </div>
-
-            <div class="contact__content">
-              <label for="message-contact" class="contact__label">Message</label>
-              <textarea name="" cols="0" rows="7" id="message-contact" class="contact__input"></textarea>
-            </div>
-
-            <div>
-              <a href="#" class="button button--flex">Send Message</a>
-              <i class="uil uil-message button__icon"></i>
-            </div>
-          </form> -->
-
-        </div>
-      </div>
-
-    </section>
-  </main>
-
-  <!--==================== FOOTER ====================-->
-  <footer class="footer">
-    <div class="footer__bg">
-      <div class="footer__container container grid">
-        <div>
-          <h1 class="footer__title">Jone</h1>
-          <span class="footer__subtitle">Mobile Developer</span>
-        </div>
-
-        <ul class="footer__links">
-          <li>
-            <a href="#services" class="footer__link">Serviços</a>
-          </li>
-
-          <li>
-            <a href="#portfolio" class="footer__link">Portfólio</a>
-          </li>
-
-          <li>
-            <a href="#contact" class="footer__link">Contato</a>
-          </li>
-        </ul>
-
-        <div class="footer__socials">
-          <a href="https://www.facebook.com/Joneluisbulande/" class="footer__social" target="_blank"
-            class="footer__social">
-            <i class="uil uil-facebook-f"></i>
-          </a>
-
-          <a href="https://www.instagram.com/JoneBulande/" target="_blank" class="footer__social"
-            class="footer__social">
-            <i class="uil uil-instagram"></i>
-          </a>
-
-          <a href="https://www.linkedin.com/in/Jone-Bulande/" target="_blank" class="footer__social"
-            class="footer__social">
-            <i class="uil uil-linkedin-alt"></i>
-          </a>
-        </div>
-      </div>
-
-      <p class="footer__copy">&#169; Jone Bulande. Todos os direitos reservados.</p>
     </div>
 
+    <div class="hero-visual">
+      <div class="phone-mockup">
+        <!-- Floating badges -->
+        <div class="tech-badge badge-flutter">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.754 3.33L5.522 12.56l3.374 3.373 12.606-12.604H14.754zM14.714 15.55l-3.55-3.55-3.37 3.38 3.55 3.55 3.37-3.38zM9.123 18.98l2.042 2.042h7.482l-5.112-5.112-4.412 3.07z" fill="#54C5F8"/>
+          </svg>
+          Flutter
+        </div>
+        <div class="tech-badge badge-dart">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M4.105 4.105S9.158 1.58 11.684.316a3.079 3.079 0 011.481-.316 3.079 3.079 0 012.17.9l6.865 6.865c.424.424.7 1.002.7 1.637 0 .635-.276 1.213-.7 1.637l-6.865 6.865a3.079 3.079 0 01-2.17.9 3.079 3.079 0 01-2.17-.9L4.814 11.52a3.079 3.079 0 01-.9-2.17V4.947L4.105 4.105z" fill="#45D1C8"/>
+          </svg>
+          Dart
+        </div>
+        <div class="tech-badge badge-android">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M17.523 15.34a.53.53 0 01-.53.53H7.007a.53.53 0 01-.53-.53V8.36c0-.293.238-.53.53-.53h9.986c.292 0 .53.237.53.53v6.98z" fill="#7C4DFF"/>
+            <circle cx="9.5" cy="6.5" r="1" fill="#7C4DFF"/>
+            <circle cx="14.5" cy="6.5" r="1" fill="#7C4DFF"/>
+          </svg>
+          Android
+        </div>
+
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <!-- Flutter logo SVG -->
+            <svg class="flutter-logo-phone" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M60 10L20 50l14 14L88 10H60z" fill="#54C5F8" opacity="0.9"/>
+              <path d="M60 10L46 24 74 52l14-14L60 10z" fill="#45D1C8" opacity="0.7"/>
+              <path d="M34 64L20 50l14 14 13.5 13.5L34 64z" fill="#0D47A1" opacity="0.5"/>
+              <path d="M47.5 77.5L60 90h28L61.5 63.5 47.5 77.5z" fill="#54C5F8"/>
+              <path d="M47.5 77.5l14-14 14 14H47.5z" fill="#45D1C8" opacity="0.7"/>
+            </svg>
+            <div class="code-line accent"></div>
+            <div class="code-line"></div>
+            <div class="code-line accent" style="width:55%"></div>
+            <div class="code-line"></div>
+            <div class="code-line" style="width:70%"></div>
+            <div class="code-line accent"></div>
+            <div class="code-line" style="width:80%"></div>
+            <div class="code-line" style="width:45%"></div>
+          </div>
+          <div class="phone-glow"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-number">2+</span>
+      <div class="stat-label">Anos de Experiência</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">5+</span>
+      <div class="stat-label">Apps Publicados</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">3+</span>
+      <div class="stat-label">Empresas</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">1K+</span>
+      <div class="stat-label">Downloads</div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-tag">Sobre Mim</div>
+    <h2 class="section-title">Flutter Dev<br><span style="color: var(--flutter-blue)">de Moçambique 🇲🇿</span></h2>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>
+          Sou <strong>Jone Bulande</strong>, desenvolvedor Mobile especializado em <strong>Flutter</strong> 
+          com base em Maputo, Moçambique. Desenvolvo aplicativos cross-platform para Android e iOS 
+          com foco em performance e UX.
+        </p>
+        <p>
+          Tenho experiência em todo o ciclo do produto — desde o design da arquitectura até ao 
+          <strong>deploy na Play Store e App Store</strong>. Trabalho com Firebase, REST APIs, 
+          gestão de estado com Provider/Riverpod, e muito mais.
+        </p>
+        <div class="tech-stack">
+          <span class="tech-pill">Flutter</span>
+          <span class="tech-pill">Dart</span>
+          <span class="tech-pill">Firebase</span>
+          <span class="tech-pill">Riverpod</span>
+          <span class="tech-pill">REST API</span>
+          <span class="tech-pill">Play Store</span>
+          <span class="tech-pill">App Store</span>
+          <span class="tech-pill">Git</span>
+          <span class="tech-pill">Node.js</span>
+          <span class="tech-pill">SQLite</span>
+        </div>
+        <div style="margin-top: 2rem;">
+          <a href="./assets/pdf/Jone_Bulande.pdf" class="btn btn-outline">
+            Download CV ↓
+          </a>
+        </div>
+      </div>
+      <div class="about-visual reveal" style="transition-delay: 0.2s">
+        <div class="profile-card">
+          <div class="profile-avatar">👨🏿‍💻</div>
+          <div class="profile-name">Jone Bulande</div>
+          <div class="profile-sub">// flutter_developer.dart</div>
+          <div class="profile-info-row">
+            <div class="info-icon">📍</div>
+            Maputo, Moçambique
+          </div>
+          <div class="profile-info-row">
+            <div class="info-icon">📧</div>
+            JoneBulande@gmail.com
+          </div>
+          <div class="profile-info-row">
+            <div class="info-icon">📱</div>
+            +258 870 364 565
+          </div>
+          <div class="profile-info-row">
+            <div class="info-icon">💼</div>
+            Disponível para freelance
+          </div>
+          <div class="profile-info-row">
+            <div class="info-icon">🎯</div>
+            Cross-platform specialist
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPS -->
+  <section id="apps" style="background: var(--surface); max-width: 100%; padding: 5rem 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 4rem;">
+      <div class="section-tag reveal">Portfólio</div>
+      <h2 class="section-title reveal">Apps Publicados<br><span style="color: var(--text-dim); font-size: 0.6em; font-weight: 300">na Play Store</span></h2>
+
+      <div class="apps-grid">
+        <!-- App 1: MarrarApp -->
+        <div class="app-card reveal" style="--card-glow: rgba(84,197,248,0.08);">
+          <div class="app-card-header">
+            <div class="app-icon">
+              <img src="https://play-lh.googleusercontent.com/fj0g2X2257qUu9ojcAzaafpORmaeNXlah8vfqeaBs1MLf5K69VaQ6GgghArtBZyhIQ=w240-h480" alt="marrarApp icon" onerror="this.style.display='none'; this.parentNode.innerHTML='📚'">
+            </div>
+            <div class="app-meta">
+              <div class="app-name">marrarApp</div>
+              <div class="app-category">Education</div>
+            </div>
+            <div class="app-store-badge">▶ Play Store</div>
+          </div>
+          <p class="app-desc">
+            A app perfeita para estudantes do ensino secundário e superior em Moçambique. 
+            Acesso fácil e gratuito a exames, testes e quizzes interactivos.
+          </p>
+          <div class="app-tags">
+            <span class="app-tag">Flutter</span>
+            <span class="app-tag">Firebase</span>
+            <span class="app-tag">Education</span>
+            <span class="app-tag">Offline</span>
+          </div>
+          <div class="app-footer">
+            <div class="app-downloads">
+              <strong>100+</strong> downloads
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.marrarapp.marrar02" target="_blank" class="app-link">
+              Ver na Store →
+            </a>
+          </div>
+        </div>
+
+        <!-- App 2: Arquétipos -->
+        <div class="app-card reveal" style="--card-glow: rgba(124,77,255,0.08); transition-delay: 0.15s">
+          <div class="app-card-header">
+            <div class="app-icon" style="background: linear-gradient(135deg, #7C4DFF, #9C6FFF);">
+              <img src="https://play-lh.googleusercontent.com/cxythTtb_7yKICLsZ8mMnOaoiNa1QWXto7BHIhq7ll0yi4pV6-NIq8Bbw7pjIeCeXHA5=w240-h480" alt="Arquétipos icon" onerror="this.style.display='none'; this.parentNode.innerHTML='🔮'">
+            </div>
+            <div class="app-meta">
+              <div class="app-name">Arquétipos</div>
+              <div class="app-category">Lifestyle · Self-Knowledge</div>
+            </div>
+            <div class="app-store-badge" style="color: #A78BFA; border-color: rgba(124,77,255,0.3);">▶ Play Store</div>
+          </div>
+          <p class="app-desc">
+            Descobre o arquétipo que define a tua essência. Explora padrões universais de comportamento 
+            e emoção para autoconhecimento e crescimento pessoal.
+          </p>
+          <div class="app-tags">
+            <span class="app-tag">Flutter</span>
+            <span class="app-tag">Lifestyle</span>
+            <span class="app-tag">UI/UX</span>
+            <span class="app-tag">4.1★</span>
+          </div>
+          <div class="app-footer">
+            <div class="app-downloads">
+              <strong>1K+</strong> downloads · 14 reviews
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.archetypes" target="_blank" class="app-link" style="color: #A78BFA;">
+              Ver na Store →
+            </a>
+          </div>
+        </div>
+
+        <!-- App 3: My Pills -->
+        <div class="app-card reveal" style="transition-delay: 0.3s">
+          <div class="app-card-header">
+            <div class="app-icon" style="background: linear-gradient(135deg, #45D1C8, #54C5F8);">💊</div>
+            <div class="app-meta">
+              <div class="app-name">My Pills</div>
+              <div class="app-category">Health · Reminder</div>
+            </div>
+          </div>
+          <p class="app-desc">
+            Organiza facilmente os teus horários de medicação e nunca mais esqueças de tomar os teus remédios.
+          </p>
+          <div class="app-tags">
+            <span class="app-tag">Flutter</span>
+            <span class="app-tag">Notifications</span>
+            <span class="app-tag">Health</span>
+          </div>
+          <div class="app-footer">
+            <div class="app-downloads">Em desenvolvimento</div>
+            <span class="app-link" style="opacity:0.5; cursor: default;">Em breve</span>
+          </div>
+        </div>
+
+        <!-- App 4: My Links -->
+        <div class="app-card reveal" style="transition-delay: 0.1s">
+          <div class="app-card-header">
+            <div class="app-icon" style="background: linear-gradient(135deg, #0D47A1, #02539A);">🔗</div>
+            <div class="app-meta">
+              <div class="app-name">My Links</div>
+              <div class="app-category">Productivity</div>
+            </div>
+          </div>
+          <p class="app-desc">
+            Armazena, organiza e acede a links importantes de forma rápida e prática. O teu gestor de links pessoal.
+          </p>
+          <div class="app-tags">
+            <span class="app-tag">Flutter</span>
+            <span class="app-tag">SQLite</span>
+            <span class="app-tag">Productivity</span>
+          </div>
+          <div class="app-footer">
+            <div class="app-downloads">Em desenvolvimento</div>
+            <span class="app-link" style="opacity:0.5; cursor: default;">Em breve</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- GitHub Projects -->
+      <div style="margin-top: 3rem;" class="reveal">
+        <div class="section-tag" style="margin-bottom: 1.5rem;">Open Source</div>
+        <div class="github-projects">
+          <a href="https://github.com/JoneBulande/gulera" target="_blank" class="gh-card">
+            <div class="gh-card-top">
+              <span class="gh-icon">⚙</span>
+              <span class="gh-name">gulera</span>
+            </div>
+            <p class="gh-desc">Recriação em Flutter da interface do Ignite Gym (Rocketseat). UI de ginásio cross-platform.</p>
+            <div class="gh-lang"><span class="lang-dot dart"></span> Dart / Flutter</div>
+          </a>
+          <a href="https://github.com/JoneBulande/FlutterApp-Dados" target="_blank" class="gh-card">
+            <div class="gh-card-top">
+              <span class="gh-icon">🎲</span>
+              <span class="gh-name">FlutterApp-Dados</span>
+            </div>
+            <p class="gh-desc">App Flutter que simula o lançamento de dois dados com faces aleatórias geradas ao clicar.</p>
+            <div class="gh-lang"><span class="lang-dot dart"></span> Dart / Flutter</div>
+          </a>
+          <a href="https://github.com/JoneBulande/NodeJs-CRUD-API" target="_blank" class="gh-card">
+            <div class="gh-card-top">
+              <span class="gh-icon">⚡</span>
+              <span class="gh-name">NodeJs-CRUD-API</span>
+            </div>
+            <p class="gh-desc">REST API completa com Node.js e Express.js. CRUD com operações HTTP e estrutura escalável.</p>
+            <div class="gh-lang"><span class="lang-dot js"></span> JavaScript / Node.js</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-tag reveal">Serviços</div>
+    <h2 class="section-title reveal">O que posso<br><span style="color: var(--flutter-blue)">fazer por ti</span></h2>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-number">01</div>
+        <div class="service-icon-wrap">📱</div>
+        <h3 class="service-title">Apps Mobile Cross-Platform</h3>
+        <p class="service-desc">Desenvolvimento de aplicativos Android e iOS com Flutter. Uma única codebase, dois sistemas operativos, qualidade nativa.</p>
+      </div>
+      <div class="service-card reveal" style="transition-delay: 0.15s">
+        <div class="service-number">02</div>
+        <div class="service-icon-wrap">🚀</div>
+        <h3 class="service-title">Deploy nas Lojas</h3>
+        <p class="service-desc">Publicação completa na Google Play Store e Apple App Store, incluindo configuração de certificados, ASO e actualizações.</p>
+      </div>
+      <div class="service-card reveal" style="transition-delay: 0.3s">
+        <div class="service-number">03</div>
+        <div class="service-icon-wrap">🗄️</div>
+        <h3 class="service-title">Arquitectura & Backend</h3>
+        <p class="service-desc">Design de base de dados, APIs REST com Node.js e integração com Firebase para aplicativos robustos e escaláveis.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-tag reveal">Contacto</div>
+    <h2 class="section-title reveal" style="margin-bottom: 2rem;">Vamos trabalhar<br><span style="color: var(--flutter-blue)">juntos?</span></h2>
+    <div class="contact-wrapper reveal">
+      <div>
+        <p style="color: var(--text-dim); margin-bottom: 2rem; line-height: 1.7;">
+          Tens um projecto em mente? Entra em contacto e recebe um <strong style="color: var(--flutter-blue)">desconto de 5%</strong> no teu novo projecto.
+        </p>
+        <div class="contact-info-item">
+          <div class="contact-icon">📱</div>
+          <div>
+            <div class="contact-label">WhatsApp / Ligação</div>
+            <div class="contact-value">+258 870 364 565</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">JoneBulande@gmail.com</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Localização</div>
+            <div class="contact-value">Maputo, Moçambique</div>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="https://github.com/JoneBulande" target="_blank" class="social-link" title="GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/Jone-Bulande/" target="_blank" class="social-link" title="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+          <a href="https://instagram.com/JoneBulande" target="_blank" class="social-link" title="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://wa.me/+258870364565" target="_blank" class="social-link" title="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div style="text-align: center;">
+        <div style="font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--text-dim); margin-bottom: 1.5rem;">// novo projecto?</div>
+        <a href="https://wa.me/+258870364565" target="_blank" class="btn btn-primary" style="font-size: 1rem; padding: 1rem 2.5rem; display: inline-flex;">
+          Enviar Mensagem ↗
+        </a>
+        <p style="margin-top: 1.5rem; font-size: 0.78rem; color: var(--text-dim);">
+          Resposta em menos de 24h
+        </p>
+        <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(84,197,248,0.04); border-radius: 12px; border: 1px dashed rgba(84,197,248,0.2);">
+          <div style="font-size: 0.7rem; color: var(--flutter-blue); font-family: 'Space Mono', monospace; margin-bottom: 0.5rem;">OFERTA ESPECIAL</div>
+          <div style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.3rem;">5% OFF</div>
+          <div style="font-size: 0.8rem; color: var(--text-dim);">No teu próximo projecto</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>Jone Bulande</span> — Flutter Mobile Developer · Maputo, Moçambique 🇲🇿<br>
+    <span style="color: var(--text-dim); font-size: 0.7rem; margin-top: 0.3rem; display: block;">
+      © 2026 · Feito com Flutter ❤️ &nbsp;no coração
+    </span>
   </footer>
 
-  <!--==================== SCROLL TOP ====================-->
-  <a href="" class="scrollup" id="scroll-up">
-    <i class="uil uil-arrow-up scroll__icon"></i>
-  </a>
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal, .stat-item');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
 
-  <!--==================== SWIPER JS ====================-->
-  <script src="assets/js/swiper-bundle.min.js"></script>
+    // Stagger stat items
+    document.querySelectorAll('.stat-item').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.1}s`;
+    });
 
-  <!--==================== MAIN JS ====================-->
-  <script src="assets/js/main.js"></script>
+    // Active nav link
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 200) current = s.id;
+      });
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--flutter-blue)' : '';
+      });
+    });
+
+    // Smooth shimmer on code lines
+    document.querySelectorAll('.code-line').forEach((el, i) => {
+      el.style.animationDelay = `${i * 0.3}s`;
+    });
+  </script>
 </body>
-
 </html>
