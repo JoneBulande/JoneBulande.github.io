@@ -1,109 +1,1685 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Jone Bulande</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--  -->
-    <link rel="stylesheet" href="style.css" />
-    <!--  -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Special Elite"
-      rel="stylesheet"
-    />
-    <!--  -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
-    />
-  </head>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jone Bulande — Fullstack Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <body>
-    <header class="center">
-      <h1>
-        Jone <br />
-        Bulande
+  <style>
+    :root {
+      --bg:        #080A0E;
+      --surface:   #0F1218;
+      --surface2:  #161B24;
+      --surface3:  #1C2230;
+      --border:    rgba(255,255,255,0.06);
+      --border-hi: rgba(255,255,255,0.12);
+      --text:      #E8ECF2;
+      --text-mid:  #8A93A8;
+      --text-dim:  #4A5268;
+      /* Purple — used sparingly */
+      --purple:    #8B5CF6;
+      --purple-lo: rgba(139,92,246,0.12);
+      --purple-bd: rgba(139,92,246,0.25);
+      --white:     #FFFFFF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 400;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    ::selection { background: rgba(139,92,246,0.25); }
+    ::-webkit-scrollbar { width: 2px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--purple); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.8rem 5rem;
+      transition: all 0.4s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(8,10,14,0.95);
+      backdrop-filter: blur(20px);
+      padding: 1.1rem 5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .logo span { color: var(--purple); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.25s;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.5rem;
+      background: var(--white);
+      color: var(--bg);
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-cta:hover {
+      background: #D4C4FF;
+      transform: translateY(-1px);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 9rem 5rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle noise grain */
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    /* Very subtle purple glow — top center */
+    .hero-glow {
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 600px;
+      background: radial-gradient(ellipse, rgba(100,60,200,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 900px; }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 2.5rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-dim);
+      letter-spacing: 0.04em;
+    }
+
+    .live-dot {
+      width: 6px; height: 6px;
+      background: #22C55E;
+      border-radius: 50%;
+      box-shadow: 0 0 6px #22C55E;
+      animation: liveblink 2.5s ease infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes liveblink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .eyebrow-line {
+      width: 32px; height: 1px;
+      background: var(--border-hi);
+    }
+
+    h1.hero-name {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      font-size: clamp(5rem, 10vw, 9rem);
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      color: var(--white);
+      margin-bottom: 2rem;
+    }
+
+    h1.hero-name .dim-line {
+      color: var(--text-dim);
+      font-weight: 300;
+    }
+
+    /* Purple only on one word */
+    h1.hero-name .accent { color: var(--purple); }
+
+    .hero-bottom {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 5rem;
+      align-items: end;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+      max-width: 460px;
+      font-weight: 400;
+    }
+
+    .hero-desc strong { color: var(--text); font-weight: 600; }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 2.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 6px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s;
+      text-decoration: none;
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: -0.01em;
+    }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--bg);
+    }
+
+    .btn-white:hover {
+      background: #D4C4FF;
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-mid);
+      border: 1px solid var(--border-hi);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(255,255,255,0.25);
+      color: var(--text);
+      transform: translateY(-2px);
+    }
+
+    /* Stats — right side of hero */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .stat-box {
+      background: var(--surface);
+      padding: 1.5rem 2rem;
+      transition: background 0.25s;
+    }
+
+    .stat-box:hover { background: var(--surface2); }
+
+    .stat-n {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--white);
+      letter-spacing: -0.04em;
+    }
+
+    .stat-n sub { color: var(--purple); font-size: 1.4rem; vertical-align: super; }
+
+    .stat-l {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-dim);
+      margin-top: 0.3rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ── TICKER ── */
+    .ticker {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      overflow: hidden;
+      padding: 0.75rem 0;
+    }
+
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: tickerRoll 40s linear infinite;
+    }
+
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0 2rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-dim);
+      white-space: nowrap;
+    }
+
+    .ticker-item .bull { color: var(--border-hi); }
+    .ticker-item.accent-item { color: var(--text-mid); }
+
+    @keyframes tickerRoll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── SECTION BASE ── */
+    .sec {
+      padding: 7rem 5rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .sec-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 1.2rem;
+    }
+
+    h2.sec-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--white);
+    }
+
+    h2.sec-title .muted { color: var(--text-dim); font-weight: 300; }
+
+    /* ── ABOUT ── */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 6rem;
+      margin-top: 4rem;
+      align-items: start;
+    }
+
+    .about-p {
+      font-size: 1rem;
+      color: var(--text-mid);
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-p strong { color: var(--text); font-weight: 600; }
+    .about-p a { color: var(--purple); text-decoration: none; }
+    .about-p a:hover { text-decoration: underline; }
+
+    .stack-group-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-top: 2rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .stack-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .chip {
+      padding: 0.35rem 0.85rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text-mid);
+      transition: all 0.2s;
+    }
+
+    .chip:hover {
+      border-color: var(--border-hi);
+      color: var(--text);
+    }
+
+    .chip.hi {
+      background: var(--purple-lo);
+      border-color: var(--purple-bd);
+      color: #C4B5FD;
+    }
+
+    .avail-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.1rem;
+      border: 1px solid rgba(34,197,94,0.3);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #4ADE80;
+      margin-top: 2rem;
+      background: rgba(34,197,94,0.06);
+    }
+
+    /* Terminal */
+    .terminal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .tbar {
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border);
+      padding: 0.7rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .td { width: 10px; height: 10px; border-radius: 50%; }
+    .td-r { background: #FF5757; } .td-y { background: #FCD34D; } .td-g { background: #22C55E; }
+    .tbar-name { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-dim); margin-left: 0.4rem; }
+
+    .tbody {
+      padding: 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      line-height: 2;
+      color: var(--text-mid);
+    }
+
+    .t-p { color: var(--purple); }
+    .t-g { color: #4ADE80; }
+    .t-b { color: #7DD3FC; }
+    .t-w { color: var(--text); }
+    .t-di { color: var(--text-dim); }
+    .t-cur {
+      display: inline-block;
+      width: 6px; height: 14px;
+      background: var(--purple);
+      vertical-align: middle;
+      margin-left: 2px;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    /* ── APPS ── */
+    .apps-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 7rem 0;
+    }
+
+    .apps-inner { max-width: 1300px; margin: 0 auto; padding: 0 5rem; }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .app-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.35s ease;
+    }
+
+    .app-card:hover {
+      border-color: var(--border-hi);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    /* App banner — dark, cinematic */
+    .app-banner {
+      height: 120px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .banner-archetypes {
+      background: linear-gradient(135deg, #0C0818 0%, #1A1035 60%, #100820 100%);
+    }
+
+    .banner-marrar {
+      background: linear-gradient(135deg, #080E1A 0%, #0D1E38 60%, #080E1A 100%);
+    }
+
+    .banner-wip {
+      background: linear-gradient(135deg, #0A0A10 0%, #12121E 100%);
+    }
+
+    /* Subtle geometric pattern overlay */
+    .banner-geo {
+      position: absolute;
+      inset: 0;
+      opacity: 0.4;
+    }
+
+    .app-icon-img {
+      width: 64px; height: 64px;
+      border-radius: 16px;
+      object-fit: cover;
+      position: relative;
+      z-index: 1;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    }
+
+    .app-icon-ph {
+      width: 64px; height: 64px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      position: relative;
+      z-index: 1;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+    }
+
+    .app-body {
+      padding: 1.4rem 1.6rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .app-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.8rem;
+    }
+
+    .app-name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    .app-cat {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.2rem;
+    }
+
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid rgba(34,197,94,0.3);
+      border-radius: 4px;
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: #4ADE80;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .live-badge-dot { width: 4px; height: 4px; background: #4ADE80; border-radius: 50%; }
+
+    .wip-badge {
+      padding: 0.25rem 0.6rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .app-stars {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .star-row { display: flex; gap: 1px; }
+
+    .s { width: 11px; height: 11px; background: #FBBF24;
+      clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); }
+    .s-h { opacity: 0.35; }
+
+    .star-score { font-size: 0.8rem; font-weight: 700; color: var(--text); }
+    .star-ct { font-size: 0.75rem; color: var(--text-dim); }
+
+    .app-desc {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 1.2rem;
+    }
+
+    .app-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.2rem; }
+
+    .atag {
+      padding: 0.2rem 0.55rem;
+      border-radius: 3px;
+      font-size: 0.67rem;
+      font-weight: 500;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+    }
+
+    .atag-p { background: var(--purple-lo); border-color: var(--purple-bd); color: #C4B5FD; }
+
+    .app-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1.1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .dl-count { font-size: 0.8rem; color: var(--text-dim); }
+    .dl-count strong { color: var(--text); font-weight: 600; }
+
+    .store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.1rem;
+      border-radius: 5px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.25s;
+      letter-spacing: -0.01em;
+    }
+
+    .sbtn-main {
+      background: var(--white);
+      color: var(--bg);
+    }
+
+    .sbtn-main:hover {
+      background: #D4C4FF;
+      transform: translateY(-1px);
+    }
+
+    .sbtn-dis {
+      background: var(--surface2);
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+      opacity: 0.5;
+      cursor: default;
+    }
+
+    .apps-cta {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    /* ── PROJECTS ── */
+    .proj-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .proj-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s;
+    }
+
+    .proj-card:hover {
+      border-color: var(--border-hi);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+    }
+
+    .proj-preview {
+      height: 150px;
+      background: var(--surface2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* mini browser */
+    .mbw {
+      width: 86%;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    }
+
+    .mbbar {
+      background: #14161C;
+      padding: 0.45rem 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .mbd { width: 7px; height: 7px; border-radius: 50%; }
+    .mbd-r{background:#FF5757} .mbd-y{background:#FCD34D} .mbd-g{background:#22C55E}
+
+    .mburl {
+      flex:1;
+      background: rgba(255,255,255,0.04);
+      border-radius:3px;
+      padding: 0.15rem 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      color: var(--text-dim);
+      margin-left: 0.4rem;
+    }
+
+    .mbcontent {
+      background: linear-gradient(180deg, #08090F 0%, #060608 100%);
+      height: 90px;
+      padding: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .mbnav { display: flex; justify-content: space-between; align-items: center; }
+    .mblogo { width: 36px; height: 6px; background: rgba(255,255,255,0.5); border-radius: 2px; }
+    .mblnks { display: flex; gap: 0.35rem; }
+    .mblnk { width: 20px; height: 5px; background: rgba(255,255,255,0.12); border-radius: 2px; }
+    .mbh { width: 55%; height: 9px; background: rgba(255,255,255,0.4); border-radius: 2px; margin-top: 0.35rem; }
+    .mbsub { width: 40%; height: 6px; background: rgba(255,255,255,0.18); border-radius: 2px; }
+    .mbcta { width: 48px; height: 14px; background: rgba(139,92,246,0.5); border-radius: 3px; margin-top: 0.2rem; }
+
+    /* gh preview */
+    .ghprev {
+      background: #0D1117;
+      width: 86%;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .ghline { height: 6px; border-radius: 2px; background: rgba(255,255,255,0.06); }
+
+    .proj-body {
+      padding: 1.4rem 1.6rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .proj-type {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 0.5rem;
+    }
+
+    .proj-name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      transition: color 0.25s;
+    }
+
+    .proj-card:hover .proj-name { color: #C4B5FD; }
+
+    .proj-desc {
+      font-size: 0.84rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 1rem;
+    }
+
+    .proj-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .proj-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+
+    .proj-arr {
+      font-size: 1rem;
+      color: var(--text-dim);
+      transition: all 0.25s;
+    }
+
+    .proj-card:hover .proj-arr { color: var(--purple); transform: translate(3px, -3px); }
+
+    /* Small grid */
+    .small-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .sm-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.4rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sm-card:hover {
+      border-color: var(--border-hi);
+      transform: translateY(-3px);
+    }
+
+    .sm-icon { font-size: 1.4rem; margin-bottom: 0.8rem; }
+
+    .sm-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.4rem;
+      transition: color 0.25s;
+    }
+
+    .sm-card:hover .sm-name { color: #C4B5FD; }
+
+    .sm-desc { font-size: 0.8rem; color: var(--text-mid); line-height: 1.6; flex: 1; margin-bottom: 0.8rem; }
+
+    .sm-lang {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-dim);
+    }
+
+    .ld { width: 7px; height: 7px; border-radius: 50%; }
+
+    /* ── SERVICES ── */
+    .svc-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-top: 3.5rem;
+    }
+
+    .svc {
+      background: var(--surface);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.25s;
+    }
+
+    .svc:hover { background: var(--surface2); }
+    .svc.tall { grid-row: span 2; }
+    .svc.lo { background: rgba(139,92,246,0.04); }
+
+    .svc-n {
+      position: absolute;
+      top: 1rem; right: 1.5rem;
+      font-size: 5rem;
+      font-weight: 900;
+      color: rgba(255,255,255,0.025);
+      line-height: 1;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .svc-icon { font-size: 1.6rem; margin-bottom: 1.2rem; display: block; }
+
+    .svc-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.7rem;
+    }
+
+    .svc-desc { font-size: 0.83rem; color: var(--text-dim); line-height: 1.7; }
+
+    .svc-list { list-style: none; margin-top: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .svc-list li { font-size: 0.82rem; color: var(--text-mid); display: flex; align-items: center; gap: 0.6rem; }
+    .svc-list li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--purple); flex-shrink: 0; }
+
+    /* ── CONTACT ── */
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .contact-main {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* single purple accent line */
+    .contact-main::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--purple);
+    }
+
+    .contact-h {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .contact-sub {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-ctas { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+
+    .disc-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1.5rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-dim);
+    }
+
+    .disc-note strong { color: var(--text); }
+
+    .contact-side {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .ci {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.25s;
+    }
+
+    .ci:hover {
+      border-color: var(--border-hi);
+      background: var(--surface2);
+    }
+
+    .ci-ico {
+      width: 38px; height: 38px;
+      border-radius: 8px;
+      background: var(--surface2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+    }
+
+    .ci-l { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); }
+    .ci-v { font-size: 0.9rem; font-weight: 500; color: var(--text); margin-top: 0.15rem; }
+    .ci-arr { margin-left: auto; font-size: 0.9rem; color: var(--text-dim); transition: all 0.25s; }
+    .ci:hover .ci-arr { color: var(--purple); transform: translate(2px,-2px); }
+
+    .soc-row {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.1rem 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .soc-lbl { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); margin-right: auto; }
+
+    .soc {
+      width: 32px; height: 32px;
+      border-radius: 6px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: all 0.25s;
+    }
+
+    .soc:hover {
+      background: var(--purple-lo);
+      border-color: var(--purple-bd);
+      color: #C4B5FD;
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .foot-l { font-size: 0.85rem; color: var(--text-dim); }
+    .foot-l strong { color: var(--text); font-weight: 600; }
+    .foot-r { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-dim); }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      nav, nav.scrolled { padding: 1rem 2rem; }
+      .nav-links { display: none; }
+
+      #hero { padding: 8rem 2rem 4rem; }
+      .hero-bottom { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); }
+      h1.hero-name { font-size: clamp(3.5rem, 13vw, 6rem); }
+
+      .sec { padding: 4rem 2rem; }
+      .about-layout { grid-template-columns: 1fr; gap: 3rem; }
+
+      .apps-inner { padding: 0 2rem; }
+      .apps-section { padding: 5rem 0; }
+      .apps-grid { grid-template-columns: 1fr 1fr; }
+
+      .proj-grid { grid-template-columns: 1fr; }
+      .small-grid { grid-template-columns: 1fr 1fr; }
+
+      .svc-grid { grid-template-columns: 1fr; }
+      .svc.tall { grid-row: span 1; }
+
+      .contact-wrap { grid-template-columns: 1fr; }
+
+      footer { padding: 1.5rem 2rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+
+    @media (max-width: 600px) {
+      h1.hero-name { font-size: 3.2rem; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .apps-grid { grid-template-columns: 1fr; }
+      .small-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#hero" class="logo">Jone<span>.</span>dev</a>
+    <ul class="nav-links">
+      <li><a href="#about">Sobre</a></li>
+      <li><a href="#apps">Apps Mobile</a></li>
+      <li><a href="#work">Projetos</a></li>
+      <li><a href="#services">Serviços</a></li>
+      <li><a href="#contact">Contato</a></li>
+    </ul>
+    <a href="https://wa.me/+258870364565" class="nav-cta">Contratar →</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="live-dot"></span>
+        Disponível para projetos
+        <span class="eyebrow-line"></span>
+        Maputo, Moçambique 🇲🇿
+      </div>
+
+      <h1 class="hero-name">
+        Jone<br>
+        <span class="dim-line">Bu<span class="accent">l</span>ande</span>
       </h1>
-      <h1 class="logo">J1👨‍💻</h1>
-    </header>
 
-    <main class="center">
-      <section class="user_description">
-        <h2>👨‍💻 Jone Bulande</h2>
-        <p>🎓 Estudante de Engenharia e Ciências da Computação</p>
-        <p>
-          📚 Apaixonado por tecnologia e inovação, sou entusiasmado por
-          programação, e tenho experiência em várias tecnologias, incluindo
-          HTML, CSS, JavaScript, Git, Python e Java. Busco oportunidades para
-          aplicar meus conhecimentos e colaborar em projetos desafiadores.
-        </p>
-      </section>
-
-      <section class="section_techs">
-        <h2>💻 Tecnologias:</h2>
-        <div class="techs_container">
-          <div class="tech_card">
-            <i class="devicon-html5-plain-wordmark colored"></i>
-            <h2 class="tech_name">html</h2>
-          </div>
-
-          <div class="tech_card">
-            <i class="devicon-css3-plain-wordmark colored"></i>
-            <h2 class="tech_name">Css</h2>
-          </div>
-
-          <div class="tech_card">
-            <i class="devicon-javascript-plain colored"></i>
-            <h2 class="tech_name">JavaScript</h2>
-          </div>
-
-          <div class="tech_card">
-            <i class="devicon-nodejs-plain colored"></i>
-            <h2 class="tech_name">NodeJs</h2>
-          </div>
-
-          <div class="tech_card">
-            <i class="devicon-react-original colored"></i>
-            <h2 class="tech_name">React</h2>
-          </div>
-
-          <div class="tech_card">
-            <i class="devicon-express-original colored"></i>
-            <h2 class="tech_name">Express.Js</h2>
-          </div>
-
-          <div class="tech_card">
-            <i class="devicon-git-plain colored"></i>
-            <h2 class="tech_name">Git</h2>
-          </div>
-
-          <div class="tech_card">
-            <i class="devicon-dart-plain colored"></i>
-            <h2 class="tech_name">Dart</h2>
-          </div>
-
-          <div class="tech_card">
-            <i class="devicon-flutter-plain colored"></i>
-            <h2 class="tech_name">Flutter</h2>
+      <div class="hero-bottom">
+        <div>
+          <p class="hero-desc">
+            Desenvolvedor <strong>Fullstack</strong> — construo apps mobile com Flutter, websites modernos e backends robustos com Node.js. Do wireframe ao deploy, entrego produtos completos.
+          </p>
+          <div class="hero-actions">
+            <a href="#apps" class="btn btn-white">Ver Apps Mobile →</a>
+            <a href="#contact" class="btn btn-ghost">Falar comigo</a>
           </div>
         </div>
-      </section>
-    </main>
 
-    <footer class="center">
-      <p>
-        &copy; <span id="ano-atual"></span> J1. Todos os direitos reservados.
-      </p>
-      <p>
-        Designed with ♥ by
-        <a href="https://github.com/JoneBulande">Jone Bulande</a>
-      </p>
-    </footer>
+        <div class="hero-stats">
+          <div class="stat-box">
+            <div class="stat-n">2<sub>+</sub></div>
+            <div class="stat-l">Anos exp.</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-n">5<sub>+</sub></div>
+            <div class="stat-l">Apps mobile</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-n">1K<sub>+</sub></div>
+            <div class="stat-l">Downloads</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-n">3</div>
+            <div class="stat-l">Camadas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-      document.getElementById("ano-atual").textContent =
-        new Date().getFullYear();
-    </script>
-  </body>
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <div class="ticker-item accent-item">Flutter <span class="bull">·</span></div>
+      <div class="ticker-item">Node.js <span class="bull">·</span></div>
+      <div class="ticker-item">Dart <span class="bull">·</span></div>
+      <div class="ticker-item accent-item">JavaScript <span class="bull">·</span></div>
+      <div class="ticker-item">Firebase <span class="bull">·</span></div>
+      <div class="ticker-item">REST API <span class="bull">·</span></div>
+      <div class="ticker-item accent-item">Play Store <span class="bull">·</span></div>
+      <div class="ticker-item">Riverpod <span class="bull">·</span></div>
+      <div class="ticker-item">HTML · CSS · JS <span class="bull">·</span></div>
+      <div class="ticker-item accent-item">Cross-platform <span class="bull">·</span></div>
+      <div class="ticker-item">SQLite <span class="bull">·</span></div>
+      <div class="ticker-item">Express.js <span class="bull">·</span></div>
+      <div class="ticker-item">App Store <span class="bull">·</span></div>
+      <div class="ticker-item">Git <span class="bull">·</span></div>
+      <!-- dupe -->
+      <div class="ticker-item accent-item">Flutter <span class="bull">·</span></div>
+      <div class="ticker-item">Node.js <span class="bull">·</span></div>
+      <div class="ticker-item">Dart <span class="bull">·</span></div>
+      <div class="ticker-item accent-item">JavaScript <span class="bull">·</span></div>
+      <div class="ticker-item">Firebase <span class="bull">·</span></div>
+      <div class="ticker-item">REST API <span class="bull">·</span></div>
+      <div class="ticker-item accent-item">Play Store <span class="bull">·</span></div>
+      <div class="ticker-item">Riverpod <span class="bull">·</span></div>
+      <div class="ticker-item">HTML · CSS · JS <span class="bull">·</span></div>
+      <div class="ticker-item accent-item">Cross-platform <span class="bull">·</span></div>
+      <div class="ticker-item">SQLite <span class="bull">·</span></div>
+      <div class="ticker-item">Express.js <span class="bull">·</span></div>
+      <div class="ticker-item">App Store <span class="bull">·</span></div>
+      <div class="ticker-item">Git <span class="bull">·</span></div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about" class="sec">
+    <div class="sec-tag reveal">Sobre mim</div>
+    <h2 class="sec-title reveal">Fullstack por escolha,<br><span class="muted">mobile por paixão</span></h2>
+
+    <div class="about-layout">
+      <div class="reveal">
+        <p class="about-p">
+          Sou <strong>Jone Bulande</strong>, desenvolvedor de software baseado em Maputo, Moçambique. Comecei no mobile com Flutter e expandi para o stack completo — backends em Node.js e websites modernos do zero.
+        </p>
+        <p class="about-p">
+          Tenho apps publicados na <strong>Play Store</strong>, participei no <strong>Code in the Dark 2022</strong> em Maputo, e entrego projetos reais para clientes — incluindo o site <a href="https://rhema.co.mz" target="_blank">rhema.co.mz</a>.
+        </p>
+        <p class="about-p">
+          Penso no produto como um todo: <strong>arquitectura, UX, performance e deploy</strong>. Soluções completas, não apenas código.
+        </p>
+
+        <div class="stack-group-title">Mobile</div>
+        <div class="stack-row">
+          <span class="chip hi">Flutter</span>
+          <span class="chip hi">Dart</span>
+          <span class="chip">Firebase</span>
+          <span class="chip">Riverpod</span>
+          <span class="chip">SQLite</span>
+        </div>
+
+        <div class="stack-group-title">Backend & APIs</div>
+        <div class="stack-row">
+          <span class="chip">Node.js</span>
+          <span class="chip">Express.js</span>
+          <span class="chip">REST API</span>
+          <span class="chip">Firebase</span>
+        </div>
+
+        <div class="stack-group-title">Frontend & Web</div>
+        <div class="stack-row">
+          <span class="chip">HTML5</span>
+          <span class="chip">CSS3</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">UI/UX</span>
+        </div>
+
+        <div class="avail-tag">
+          <span class="live-dot"></span>
+          Disponível para freelance e projetos
+        </div>
+      </div>
+
+      <div class="reveal" style="transition-delay:.15s">
+        <div class="terminal">
+          <div class="tbar">
+            <div class="td td-r"></div>
+            <div class="td td-y"></div>
+            <div class="td td-g"></div>
+            <span class="tbar-name">jone ~ zsh</span>
+          </div>
+          <div class="tbody">
+            <div><span class="t-p">❯</span> cat me.json</div>
+            <br>
+            <div>{</div>
+            <div>&nbsp;&nbsp;<span class="t-p">"name"</span>: <span class="t-g">"Jone Bulande"</span>,</div>
+            <div>&nbsp;&nbsp;<span class="t-p">"role"</span>: <span class="t-g">"Fullstack Dev"</span>,</div>
+            <div>&nbsp;&nbsp;<span class="t-p">"base"</span>: <span class="t-g">"Maputo 🇲🇿"</span>,</div>
+            <div>&nbsp;&nbsp;<span class="t-p">"mobile"</span>: <span class="t-b">true</span>,</div>
+            <div>&nbsp;&nbsp;<span class="t-p">"web"</span>: <span class="t-b">true</span>,</div>
+            <div>&nbsp;&nbsp;<span class="t-p">"backend"</span>: <span class="t-b">true</span>,</div>
+            <div>&nbsp;&nbsp;<span class="t-p">"apps_shipped"</span>: <span class="t-b">5</span>,</div>
+            <div>&nbsp;&nbsp;<span class="t-p">"downloads"</span>: <span class="t-g">"1K+"</span>,</div>
+            <div>&nbsp;&nbsp;<span class="t-p">"available"</span>: <span class="t-b">true</span></div>
+            <div>}</div>
+            <br>
+            <div><span class="t-p">❯</span> <span class="t-cur"></span></div>
+          </div>
+        </div>
+        <div style="margin-top:1rem">
+          <a href="./assets/pdf/Jone_Bulande.pdf" class="btn btn-ghost" style="width:100%;justify-content:center;">
+            Download CV ↓
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── APPS MOBILE ── -->
+  <div class="apps-section" id="apps">
+    <div class="apps-inner">
+      <div class="sec-tag reveal">Apps Mobile</div>
+      <h2 class="sec-title reveal">Publicado na <span style="color:#C4B5FD">Play Store</span></h2>
+      <p style="font-size:1rem;color:var(--text-mid);margin-top:.8rem;margin-bottom:0;max-width:480px;" class="reveal">
+        Aplicativos Android cross-platform desenvolvidos com Flutter — disponíveis para download agora.
+      </p>
+
+      <div class="apps-grid">
+
+        <!-- Arquétipos -->
+        <div class="app-card reveal">
+          <div class="app-banner banner-archetypes">
+            <svg class="banner-geo" viewBox="0 0 260 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="200" cy="60" r="80" stroke="rgba(139,92,246,0.12)" stroke-width="1"/>
+              <circle cx="200" cy="60" r="50" stroke="rgba(139,92,246,0.08)" stroke-width="1"/>
+              <circle cx="60" cy="60" r="40" stroke="rgba(139,92,246,0.06)" stroke-width="1"/>
+            </svg>
+            <img
+              class="app-icon-img"
+              src="https://play-lh.googleusercontent.com/cxythTtb_7yKICLsZ8mMnOaoiNa1QWXto7BHIhq7ll0yi4pV6-NIq8Bbw7pjIeCeXHA5=w240-h480"
+              alt="Arquétipos"
+              onerror="this.outerHTML='<div class=\'app-icon-ph\'>🔮</div>'"
+            >
+          </div>
+          <div class="app-body">
+            <div class="app-head">
+              <div>
+                <div class="app-name">Arquétipos</div>
+                <div class="app-cat">Lifestyle · Self-knowledge</div>
+              </div>
+              <div class="live-badge"><span class="live-badge-dot"></span>Live</div>
+            </div>
+            <div class="app-stars">
+              <div class="star-row">
+                <div class="s"></div><div class="s"></div><div class="s"></div><div class="s"></div><div class="s s-h"></div>
+              </div>
+              <span class="star-score">4.1</span>
+              <span class="star-ct">· 14 avaliações</span>
+            </div>
+            <p class="app-desc">
+              Descobre o arquétipo que define a tua essência. Explora padrões universais de comportamento e emoção para autoconhecimento e crescimento pessoal.
+            </p>
+            <div class="app-tags">
+              <span class="atag atag-p">Flutter</span>
+              <span class="atag">Dart</span>
+            </div>
+            <div class="app-foot">
+              <div class="dl-count"><strong>1K+</strong> downloads</div>
+              <a href="https://play.google.com/store/apps/details?id=com.archetypes" target="_blank" class="store-btn sbtn-main">
+                ▶ Play Store
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- marrarApp -->
+        <div class="app-card reveal" style="transition-delay:.12s">
+          <div class="app-banner banner-marrar">
+            <svg class="banner-geo" viewBox="0 0 260 120" fill="none">
+              <rect x="160" y="20" width="60" height="60" rx="4" stroke="rgba(56,189,248,0.1)" stroke-width="1"/>
+              <rect x="175" y="35" width="60" height="60" rx="4" stroke="rgba(56,189,248,0.06)" stroke-width="1"/>
+              <line x1="20" y1="60" x2="120" y2="60" stroke="rgba(56,189,248,0.08)" stroke-width="1"/>
+              <line x1="60" y1="20" x2="60" y2="100" stroke="rgba(56,189,248,0.06)" stroke-width="1"/>
+            </svg>
+            <img
+              class="app-icon-img"
+              src="https://play-lh.googleusercontent.com/fj0g2X2257qUu9ojcAzaafpORmaeNXlah8vfqeaBs1MLf5K69VaQ6GgghArtBZyhIQ=w240-h480"
+              alt="marrarApp"
+              onerror="this.outerHTML='<div class=\'app-icon-ph\'>📚</div>'"
+            >
+          </div>
+          <div class="app-body">
+            <div class="app-head">
+              <div>
+                <div class="app-name">marrarApp</div>
+                <div class="app-cat">Education · Estudantes MZ</div>
+              </div>
+              <div class="live-badge"><span class="live-badge-dot"></span>Live</div>
+            </div>
+            <p class="app-desc">
+              Plataforma educativa para estudantes do ensino secundário e superior em Moçambique. Exames, quizzes e conteúdo disponível offline e gratuito.
+            </p>
+            <div class="app-tags">
+              <span class="atag atag-p">Flutter</span>
+              <span class="atag">Firebase</span>
+              <span class="atag">Offline</span>
+            </div>
+            <div class="app-foot">
+              <div class="dl-count"><strong>100+</strong> downloads</div>
+              <a href="https://play.google.com/store/apps/details?id=com.marrarapp.marrar02" target="_blank" class="store-btn sbtn-main">
+                ▶ Play Store
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- My Pills — WIP -->
+        <div class="app-card reveal" style="transition-delay:.24s">
+          <div class="app-banner banner-wip">
+            <svg class="banner-geo" viewBox="0 0 260 120" fill="none">
+              <circle cx="130" cy="60" r="35" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+              <circle cx="130" cy="60" r="55" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+            </svg>
+            <div class="app-icon-ph">💊</div>
+          </div>
+          <div class="app-body">
+            <div class="app-head">
+              <div>
+                <div class="app-name">My Pills</div>
+                <div class="app-cat">Health · Medication</div>
+              </div>
+              <div class="wip-badge">Em breve</div>
+            </div>
+            <p class="app-desc">
+              Gerir medicamentos de forma simples. Notificações de horário, histórico de doses e acompanhamento de tratamentos.
+            </p>
+            <div class="app-tags">
+              <span class="atag atag-p">Flutter</span>
+              <span class="atag">Notifications</span>
+            </div>
+            <div class="app-foot">
+              <div class="dl-count">Em desenvolvimento</div>
+              <span class="store-btn sbtn-dis">Em breve</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="apps-cta reveal">
+        <a href="https://play.google.com/store/apps/developer?id=Jone+Bulande" target="_blank" class="btn btn-ghost">
+          Ver todos os apps na Play Store →
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <section id="work" class="sec">
+    <div class="sec-tag reveal">Projetos Web</div>
+    <h2 class="sec-title reveal">Sites & <span class="muted">Código</span></h2>
+
+    <div class="proj-grid">
+      <!-- Rhema -->
+      <a href="https://rhema.co.mz" target="_blank" class="proj-card reveal">
+        <div class="proj-preview">
+          <div class="mbw">
+            <div class="mbbar">
+              <div class="mbd mbd-r"></div><div class="mbd mbd-y"></div><div class="mbd mbd-g"></div>
+              <div class="mburl">rhema.co.mz</div>
+            </div>
+            <div class="mbcontent">
+              <div class="mbnav">
+                <div class="mblogo"></div>
+                <div class="mblnks"><div class="mblnk"></div><div class="mblnk"></div><div class="mblnk"></div></div>
+              </div>
+              <div class="mbh"></div>
+              <div class="mbsub"></div>
+              <div class="mbcta"></div>
+            </div>
+          </div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-type">★ Cliente real · Website Institucional · Live</div>
+          <div class="proj-name">Rhema Microcrédito</div>
+          <p class="proj-desc">Website completo para empresa de microcrédito em Moçambique. Animações, contadores dinâmicos, formulário de contacto e design totalmente responsivo.</p>
+          <div class="proj-foot">
+            <div class="proj-tags">
+              <span class="atag">HTML</span>
+              <span class="atag">CSS</span>
+              <span class="atag">JavaScript</span>
+            </div>
+            <div class="proj-arr">↗</div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Node API -->
+      <a href="https://github.com/JoneBulande/NodeJs-CRUD-API" target="_blank" class="proj-card reveal" style="transition-delay:.1s">
+        <div class="proj-preview">
+          <div class="ghprev">
+            <div class="ghline" style="width:65%;background:rgba(139,92,246,.15)"></div>
+            <div class="ghline" style="width:50%"></div>
+            <div class="ghline" style="width:75%;background:rgba(56,189,248,.1)"></div>
+            <div class="ghline" style="width:40%"></div>
+            <div class="ghline" style="width:60%;background:rgba(139,92,246,.1)"></div>
+          </div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-type">Open Source · Backend</div>
+          <div class="proj-name">NodeJs CRUD API</div>
+          <p class="proj-desc">API REST completa com Node.js e Express. Operações CRUD com arquitectura escalável e boas práticas de desenvolvimento.</p>
+          <div class="proj-foot">
+            <div class="proj-tags">
+              <span class="atag">Node.js</span>
+              <span class="atag">Express.js</span>
+            </div>
+            <div class="proj-arr">↗</div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="small-grid">
+      <a href="https://github.com/JoneBulande/BasicMathGame" target="_blank" class="sm-card reveal">
+        <div class="sm-icon">🎮</div>
+        <div class="sm-name">Basic Math Game</div>
+        <p class="sm-desc">Jogo web de matemática com JavaScript vanilla e CSS animado. 6 estrelas no GitHub.</p>
+        <div class="sm-lang"><span class="ld" style="background:#FCD34D"></span> JavaScript · CSS</div>
+      </a>
+      <a href="https://github.com/JoneBulande/JogoDosFeriadosDeMocambique" target="_blank" class="sm-card reveal" style="transition-delay:.1s">
+        <div class="sm-icon">🇲🇿</div>
+        <div class="sm-name">Quiz Feriados MZ</div>
+        <p class="sm-desc">Quiz interactivo sobre os feriados nacionais de Moçambique — JS puro, responsivo.</p>
+        <div class="sm-lang"><span class="ld" style="background:#FCD34D"></span> JavaScript · CSS</div>
+      </a>
+      <a href="https://github.com/JoneBulande/codeinthedark2022-desafio-1" target="_blank" class="sm-card reveal" style="transition-delay:.2s">
+        <div class="sm-icon">⚡</div>
+        <div class="sm-name">Code in the Dark '22</div>
+        <p class="sm-desc">2 desafios na competição presencial em Maputo — HTML/CSS ao vivo, sem preview.</p>
+        <div class="sm-lang"><span class="ld" style="background:#F472B6"></span> HTML · CSS</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="sec" style="padding-top:0">
+    <div class="sec-tag reveal">Serviços</div>
+    <h2 class="sec-title reveal">O que posso construir <span class="muted">para ti</span></h2>
+
+    <div class="svc-grid">
+      <div class="svc tall reveal">
+        <div class="svc-n">01</div>
+        <span class="svc-icon">📱</span>
+        <div class="svc-title">Apps Mobile Cross-Platform</div>
+        <p class="svc-desc">Desenvolvimento completo com Flutter — Android e iOS a partir de uma única codebase. Performance nativa, UI refinada e integração total.</p>
+        <ul class="svc-list">
+          <li>UI/UX responsivo e polido</li>
+          <li>Integração com APIs e Firebase</li>
+          <li>Gestão de estado com Riverpod</li>
+          <li>Armazenamento local (SQLite, Hive)</li>
+          <li>Notificações e autenticação</li>
+          <li>Deploy na Play Store e App Store</li>
+        </ul>
+      </div>
+      <div class="svc reveal" style="transition-delay:.1s">
+        <div class="svc-n">02</div>
+        <span class="svc-icon">🌐</span>
+        <div class="svc-title">Websites Modernos</div>
+        <p class="svc-desc">Sites institucionais e landing pages com HTML, CSS e JS — responsivos, rápidos e visualmente fortes.</p>
+      </div>
+      <div class="svc reveal" style="transition-delay:.2s">
+        <div class="svc-n">03</div>
+        <span class="svc-icon">⚡</span>
+        <div class="svc-title">Backends & APIs</div>
+        <p class="svc-desc">APIs REST escaláveis com Node.js e Express. Integração com bases de dados e deploy em produção.</p>
+      </div>
+      <div class="svc lo reveal" style="transition-delay:.15s">
+        <div class="svc-n">04</div>
+        <span class="svc-icon">🚀</span>
+        <div class="svc-title">Deploy nas Lojas</div>
+        <p class="svc-desc">Publicação completa na Play Store e App Store — certificados, ASO e actualizações incluídas.</p>
+      </div>
+      <div class="svc reveal" style="transition-delay:.25s">
+        <div class="svc-n">05</div>
+        <span class="svc-icon">🎨</span>
+        <div class="svc-title">UI/UX & Prototipagem</div>
+        <p class="svc-desc">Do conceito ao protótipo funcional. Foco na experiência do utilizador e interfaces que convertem.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="sec" style="padding-top:0">
+    <div class="sec-tag reveal">Contato</div>
+    <h2 class="sec-title reveal">Vamos trabalhar <span class="muted">juntos?</span></h2>
+
+    <div class="contact-wrap">
+      <div class="contact-main reveal">
+        <div class="contact-h">
+          Tem um projeto em mente?
+        </div>
+        <p class="contact-sub">
+          App mobile, website ou API — respondo em menos de 24h e posso começar rapidamente.
+        </p>
+        <div class="contact-ctas">
+          <a href="https://wa.me/+258870364565" target="_blank" class="btn btn-white">Enviar mensagem →</a>
+          <a href="mailto:JoneBulande@gmail.com" class="btn btn-ghost">Enviar email</a>
+        </div>
+        <div class="disc-note">🎯 <strong>5% de desconto</strong> no primeiro projeto</div>
+      </div>
+
+      <div class="contact-side reveal" style="transition-delay:.15s">
+        <a href="https://wa.me/+258870364565" target="_blank" class="ci">
+          <div class="ci-ico">📱</div>
+          <div><div class="ci-l">WhatsApp</div><div class="ci-v">+258 870 364 565</div></div>
+          <div class="ci-arr">↗</div>
+        </a>
+        <a href="mailto:JoneBulande@gmail.com" class="ci">
+          <div class="ci-ico">✉️</div>
+          <div><div class="ci-l">Email</div><div class="ci-v">JoneBulande@gmail.com</div></div>
+          <div class="ci-arr">↗</div>
+        </a>
+        <a href="https://www.linkedin.com/in/Jone-Bulande/" target="_blank" class="ci">
+          <div class="ci-ico">💼</div>
+          <div><div class="ci-l">LinkedIn</div><div class="ci-v">Jone Bulande</div></div>
+          <div class="ci-arr">↗</div>
+        </a>
+        <div class="soc-row">
+          <span class="soc-lbl">Social</span>
+          <a href="https://github.com/JoneBulande" target="_blank" class="soc" title="GitHub">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/Jone-Bulande/" target="_blank" class="soc" title="LinkedIn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+          <a href="https://instagram.com/JoneBulande" target="_blank" class="soc" title="Instagram">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://twitter.com/JoneBulande" target="_blank" class="soc" title="X">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-l"><strong>Jone Bulande</strong> · Fullstack Developer · Maputo, Moçambique 🇲🇿</div>
+    <div class="foot-r">© 2026</div>
+  </footer>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => obs.observe(el));
+
+    // Active nav
+    const secs = document.querySelectorAll('section[id], div[id]');
+    window.addEventListener('scroll', () => {
+      let cur = '';
+      secs.forEach(s => { if (window.scrollY >= s.offsetTop - 200) cur = s.id; });
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === `#${cur}`);
+      });
+    }, { passive: true });
+  </script>
+</body>
 </html>
