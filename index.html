@@ -72,6 +72,12 @@
 
     .logo span { color: var(--purple); }
 
+    .nav-center {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+
     .nav-links {
       display: flex;
       gap: 2.5rem;
@@ -88,6 +94,47 @@
     }
 
     .nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+    /* Language Selector */
+    .lang-selector {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.5rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: all 0.25s;
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      transition: all 0.25s;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .lang-btn:hover {
+      color: var(--text);
+    }
+
+    .lang-btn.active {
+      background: var(--purple-lo);
+      color: #C4B5FD;
+      border: 1px solid var(--purple-bd);
+    }
+
+    .lang-sep {
+      color: var(--text-dim);
+      font-size: 0.8rem;
+    }
 
     .nav-cta {
       display: inline-flex;
@@ -1103,7 +1150,10 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       nav, nav.scrolled { padding: 1rem 2rem; }
+      .nav-center { gap: 1.5rem; }
       .nav-links { display: none; }
+      .lang-selector { padding: 0.4rem 0.8rem; }
+      .lang-btn { font-size: 0.7rem; padding: 0.25rem 0.5rem; }
 
       #hero { padding: 8rem 2rem 4rem; }
       .hero-bottom { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -1141,14 +1191,21 @@
   <!-- NAV -->
   <nav id="nav">
     <a href="#hero" class="logo">Jone<span>.</span>dev</a>
-    <ul class="nav-links">
-      <li><a href="#about">Sobre</a></li>
-      <li><a href="#apps">Apps Mobile</a></li>
-      <li><a href="#work">Projetos</a></li>
-      <li><a href="#services">Serviços</a></li>
-      <li><a href="#contact">Contato</a></li>
-    </ul>
-    <a href="https://wa.me/+258870364565" class="nav-cta">Contratar →</a>
+    <div class="nav-center">
+      <ul class="nav-links">
+        <li><a href="#about" data-pt="Sobre" data-en="About">Sobre</a></li>
+        <li><a href="#apps" data-pt="Apps Mobile" data-en="Mobile Apps">Apps Mobile</a></li>
+        <li><a href="#work" data-pt="Projetos" data-en="Projects">Projetos</a></li>
+        <li><a href="#services" data-pt="Serviços" data-en="Services">Serviços</a></li>
+        <li><a href="#contact" data-pt="Contato" data-en="Contact">Contato</a></li>
+      </ul>
+      <div class="lang-selector">
+        <button class="lang-btn active" data-lang="pt">PT</button>
+        <span class="lang-sep">/</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </div>
+    <a href="https://wa.me/+258870364565" class="nav-cta" data-pt="Contratar →" data-en="Hire →">Contratar →</a>
   </nav>
 
   <!-- HERO -->
@@ -1157,9 +1214,9 @@
     <div class="hero-content">
       <div class="hero-eyebrow">
         <span class="live-dot"></span>
-        Disponível para projetos
+        <span data-pt="Disponível para projetos" data-en="Available for projects">Disponível para projetos</span>
         <span class="eyebrow-line"></span>
-        Maputo, Moçambique 🇲🇿
+        <span data-pt="Maputo, Moçambique 🇲🇿" data-en="Maputo, Mozambique 🇲🇿">Maputo, Moçambique 🇲🇿</span>
       </div>
 
       <h1 class="hero-name">
@@ -1170,30 +1227,30 @@
       <div class="hero-bottom">
         <div>
           <p class="hero-desc">
-            Desenvolvedor <strong>Fullstack</strong> — construo apps mobile com Flutter, websites modernos e backends robustos com Node.js. Do wireframe ao deploy, entrego produtos completos.
+            <span data-pt="Desenvolvedor " data-en="Fullstack developer"></span><strong data-pt="Fullstack" data-en="Fullstack">Fullstack</strong><span data-pt=" — construo apps mobile com Flutter, websites modernos e backends robustos com Node.js. Do wireframe ao deploy, entrego produtos completos." data-en=" — I build mobile apps with Flutter, modern websites, and robust backends with Node.js. From wireframe to deploy, I deliver complete products."> — construo apps mobile com Flutter, websites modernos e backends robustos com Node.js. Do wireframe ao deploy, entrego produtos completos.</span>
           </p>
           <div class="hero-actions">
-            <a href="#apps" class="btn btn-white">Ver Apps Mobile →</a>
-            <a href="#contact" class="btn btn-ghost">Falar comigo</a>
+            <a href="#apps" class="btn btn-white" data-pt="Ver Apps Mobile →" data-en="See Mobile Apps →">Ver Apps Mobile →</a>
+            <a href="#contact" class="btn btn-ghost" data-pt="Falar comigo" data-en="Talk to me">Falar comigo</a>
           </div>
         </div>
 
         <div class="hero-stats">
           <div class="stat-box">
             <div class="stat-n">4<sub>+</sub></div>
-            <div class="stat-l">Anos exp.</div>
+            <div class="stat-l" data-pt="Anos exp." data-en="Years exp.">Anos exp.</div>
           </div>
           <div class="stat-box">
             <div class="stat-n">5<sub>+</sub></div>
-            <div class="stat-l">Apps mobile</div>
+            <div class="stat-l" data-pt="Apps mobile" data-en="Mobile apps">Apps mobile</div>
           </div>
           <div class="stat-box">
             <div class="stat-n">1K<sub>+</sub></div>
-            <div class="stat-l">Downloads</div>
+            <div class="stat-l" data-pt="Downloads" data-en="Downloads">Downloads</div>
           </div>
           <div class="stat-box">
             <div class="stat-n">3</div>
-            <div class="stat-l">Camadas</div>
+            <div class="stat-l" data-pt="Camadas" data-en="Layers">Camadas</div>
           </div>
         </div>
       </div>
@@ -1237,22 +1294,25 @@
 
   <!-- ABOUT -->
   <section id="about" class="sec">
-    <div class="sec-tag reveal">Sobre mim</div>
-    <h2 class="sec-title reveal">Fullstack por escolha,<br><span class="muted">mobile por paixão</span></h2>
+    <div class="sec-tag reveal" data-pt="Sobre mim" data-en="About me">Sobre mim</div>
+    <h2 class="sec-title reveal">
+      <span data-pt="Fullstack por escolha," data-en="Fullstack by choice,">Fullstack por escolha,</span><br>
+      <span class="muted" data-pt="mobile por paixão" data-en="mobile by passion">mobile por paixão</span>
+    </h2>
 
     <div class="about-layout">
       <div class="reveal">
         <p class="about-p">
-          Sou <strong>Jone Bulande</strong>, desenvolvedor de software baseado em Maputo, Moçambique. Comecei no mobile com Flutter e expandi para o stack completo — backends em Node.js e websites modernos do zero.
+          <span data-pt="Sou " data-en="I'm ">Sou </span><strong>Jone Bulande</strong><span data-pt=", desenvolvedor de software baseado em Maputo, Moçambique. Comecei no mobile com Flutter e expandi para o stack completo — backends em Node.js e websites modernos do zero." data-en=", a software developer based in Maputo, Mozambique. I started in mobile with Flutter and expanded to the full stack — backends in Node.js and modern websites from scratch.">, desenvolvedor de software baseado em Maputo, Moçambique. Comecei no mobile com Flutter e expandi para o stack completo — backends em Node.js e websites modernos do zero.</span>
         </p>
         <p class="about-p">
-          Tenho apps publicados na <strong>Play Store</strong>, participei no <strong>Code in the Dark 2022</strong> em Maputo, e entrego projetos reais para clientes — incluindo o site <a href="https://rhema.co.mz" target="_blank">rhema.co.mz</a>.
+          <span data-pt="Tenho apps publicados na " data-en="I have apps published on ">Tenho apps publicados na </span><strong>Play Store</strong><span data-pt=", participei no " data-en=", participated in ">, participei no </span><strong>Code in the Dark 2022</strong><span data-pt=" em Maputo, e entrego projetos reais para clientes — incluindo o site " data-en=" in Maputo, and deliver real projects to clients — including the website "> em Maputo, e entrego projetos reais para clientes — incluindo o site </span><a href="https://rhema.co.mz" target="_blank">rhema.co.mz</a><span data-pt="." data-en=".">.</span>
         </p>
         <p class="about-p">
-          Penso no produto como um todo: <strong>arquitectura, UX, performance e deploy</strong>. Soluções completas, não apenas código.
+          <span data-pt="Penso no produto como um todo: " data-en="I think about the product as a whole: ">Penso no produto como um todo: </span><strong data-pt="arquitectura, UX, performance e deploy" data-en="architecture, UX, performance and deployment">arquitectura, UX, performance e deploy</strong><span data-pt=". Soluções completas, não apenas código." data-en=". Complete solutions, not just code.">. Soluções completas, não apenas código.</span>
         </p>
 
-        <div class="stack-group-title">Mobile</div>
+        <div class="stack-group-title" data-pt="Mobile" data-en="Mobile">Mobile</div>
         <div class="stack-row">
           <span class="chip hi">Flutter</span>
           <span class="chip hi">Dart</span>
@@ -1261,7 +1321,7 @@
           <span class="chip">SQLite</span>
         </div>
 
-        <div class="stack-group-title">Backend & APIs</div>
+        <div class="stack-group-title" data-pt="Backend & APIs" data-en="Backend & APIs">Backend & APIs</div>
         <div class="stack-row">
           <span class="chip">Node.js</span>
           <span class="chip">Express.js</span>
@@ -1269,7 +1329,7 @@
           <span class="chip">Firebase</span>
         </div>
 
-        <div class="stack-group-title">Frontend & Web</div>
+        <div class="stack-group-title" data-pt="Frontend & Web" data-en="Frontend & Web">Frontend & Web</div>
         <div class="stack-row">
           <span class="chip">HTML5</span>
           <span class="chip">CSS3</span>
@@ -1279,7 +1339,7 @@
 
         <div class="avail-tag">
           <span class="live-dot"></span>
-          Disponível para freelance e projetos
+          <span data-pt="Disponível para freelance e projetos" data-en="Available for freelance and projects">Disponível para freelance e projetos</span>
         </div>
       </div>
 
@@ -1296,8 +1356,8 @@
             <br>
             <div>{</div>
             <div>&nbsp;&nbsp;<span class="t-p">"name"</span>: <span class="t-g">"Jone Bulande"</span>,</div>
-            <div>&nbsp;&nbsp;<span class="t-p">"role"</span>: <span class="t-g">"Fullstack Dev"</span>,</div>
-            <div>&nbsp;&nbsp;<span class="t-p">"base"</span>: <span class="t-g">"Maputo 🇲🇿"</span>,</div>
+            <div>&nbsp;&nbsp;<span class="t-p">"role"</span>: <span class="t-g" data-pt="Fullstack Dev" data-en="Fullstack Dev">Fullstack Dev</span>,</div>
+            <div>&nbsp;&nbsp;<span class="t-p">"base"</span>: <span class="t-g" data-pt="Maputo 🇲🇿" data-en="Maputo 🇲🇿">Maputo 🇲🇿</span>,</div>
             <div>&nbsp;&nbsp;<span class="t-p">"mobile"</span>: <span class="t-b">true</span>,</div>
             <div>&nbsp;&nbsp;<span class="t-p">"web"</span>: <span class="t-b">true</span>,</div>
             <div>&nbsp;&nbsp;<span class="t-p">"backend"</span>: <span class="t-b">true</span>,</div>
@@ -1310,7 +1370,7 @@
           </div>
         </div>
         <div style="margin-top:1rem">
-          <a href="./assets/pdf/Jone_Bulande.pdf" class="btn btn-ghost" style="width:100%;justify-content:center;">
+          <a href="./assets/pdf/Jone_Bulande.pdf" class="btn btn-ghost" style="width:100%;justify-content:center;" data-pt="Download CV ↓" data-en="Download CV ↓">
             Download CV ↓
           </a>
         </div>
@@ -1321,9 +1381,11 @@
   <!-- ── APPS MOBILE ── -->
   <div class="apps-section" id="apps">
     <div class="apps-inner">
-      <div class="sec-tag reveal">Apps Mobile</div>
-      <h2 class="sec-title reveal">Publicado na <span style="color:#C4B5FD">Play Store</span></h2>
-      <p style="font-size:1rem;color:var(--text-mid);margin-top:.8rem;margin-bottom:0;max-width:480px;" class="reveal">
+      <div class="sec-tag reveal" data-pt="Apps Mobile" data-en="Mobile Apps">Apps Mobile</div>
+      <h2 class="sec-title reveal">
+        <span data-pt="Publicado na " data-en="Published on ">Publicado na </span><span style="color:#C4B5FD" data-pt="Play Store" data-en="Play Store">Play Store</span>
+      </h2>
+      <p style="font-size:1rem;color:var(--text-mid);margin-top:.8rem;margin-bottom:0;max-width:480px;" class="reveal" data-pt="Aplicativos Android cross-platform desenvolvidos com Flutter — disponíveis para download agora." data-en="Cross-platform Android applications developed with Flutter — available for download now.">
         Aplicativos Android cross-platform desenvolvidos com Flutter — disponíveis para download agora.
       </p>
 
@@ -1348,18 +1410,18 @@
             <div class="app-head">
               <div>
                 <div class="app-name">Arquétipos</div>
-                <div class="app-cat">Lifestyle · Self-knowledge</div>
+                <div class="app-cat" data-pt="Lifestyle · Self-knowledge" data-en="Lifestyle · Self-knowledge">Lifestyle · Self-knowledge</div>
               </div>
-              <div class="live-badge"><span class="live-badge-dot"></span>Live</div>
+              <div class="live-badge"><span class="live-badge-dot"></span><span data-pt="Live" data-en="Live">Live</span></div>
             </div>
             <div class="app-stars">
               <div class="star-row">
                 <div class="s"></div><div class="s"></div><div class="s"></div><div class="s"></div><div class="s s-h"></div>
               </div>
               <span class="star-score">4.1</span>
-              <span class="star-ct">· 14 avaliações</span>
+              <span class="star-ct" data-pt="· 14 avaliações" data-en="· 14 ratings">· 14 avaliações</span>
             </div>
-            <p class="app-desc">
+            <p class="app-desc" data-pt="Descobre o arquétipo que define a tua essência. Explora padrões universais de comportamento e emoção para autoconhecimento e crescimento pessoal." data-en="Discover the archetype that defines your essence. Explore universal patterns of behavior and emotion for self-knowledge and personal growth.">
               Descobre o arquétipo que define a tua essência. Explora padrões universais de comportamento e emoção para autoconhecimento e crescimento pessoal.
             </p>
             <div class="app-tags">
@@ -1367,7 +1429,7 @@
               <span class="atag">Dart</span>
             </div>
             <div class="app-foot">
-              <div class="dl-count"><strong>1K+</strong> downloads</div>
+              <div class="dl-count"><strong>1K+</strong> <span data-pt="downloads" data-en="downloads">downloads</span></div>
               <a href="https://play.google.com/store/apps/details?id=com.archetypes" target="_blank" class="store-btn sbtn-main">
                 ▶ Play Store
               </a>
@@ -1395,20 +1457,20 @@
             <div class="app-head">
               <div>
                 <div class="app-name">marrarApp</div>
-                <div class="app-cat">Education · Estudantes MZ</div>
+                <div class="app-cat" data-pt="Education · Estudantes MZ" data-en="Education · Students MZ">Education · Estudantes MZ</div>
               </div>
-              <div class="live-badge"><span class="live-badge-dot"></span>Live</div>
+              <div class="live-badge"><span class="live-badge-dot"></span><span data-pt="Live" data-en="Live">Live</span></div>
             </div>
-            <p class="app-desc">
+            <p class="app-desc" data-pt="Plataforma educativa para estudantes do ensino secundário e superior em Moçambique. Exames, quizzes e conteúdo disponível offline e gratuito." data-en="Educational platform for secondary and higher education students in Mozambique. Exams, quizzes and content available offline and free.">
               Plataforma educativa para estudantes do ensino secundário e superior em Moçambique. Exames, quizzes e conteúdo disponível offline e gratuito.
             </p>
             <div class="app-tags">
               <span class="atag atag-p">Flutter</span>
               <span class="atag">Firebase</span>
-              <span class="atag">Offline</span>
+              <span class="atag" data-pt="Offline" data-en="Offline">Offline</span>
             </div>
             <div class="app-foot">
-              <div class="dl-count"><strong>100+</strong> downloads</div>
+              <div class="dl-count"><strong>100+</strong> <span data-pt="downloads" data-en="downloads">downloads</span></div>
               <a href="https://play.google.com/store/apps/details?id=com.marrarapp.marrar02" target="_blank" class="store-btn sbtn-main">
                 ▶ Play Store
               </a>
@@ -1429,11 +1491,11 @@
             <div class="app-head">
               <div>
                 <div class="app-name">My Pills</div>
-                <div class="app-cat">Health · Medication</div>
+                <div class="app-cat" data-pt="Health · Medication" data-en="Health · Medication">Health · Medication</div>
               </div>
-              <div class="wip-badge">Em breve</div>
+              <div class="wip-badge" data-pt="Em breve" data-en="Coming soon">Em breve</div>
             </div>
-            <p class="app-desc">
+            <p class="app-desc" data-pt="Gerir medicamentos de forma simples. Notificações de horário, histórico de doses e acompanhamento de tratamentos." data-en="Manage medications easily. Schedule notifications, dose history and treatment monitoring.">
               Gerir medicamentos de forma simples. Notificações de horário, histórico de doses e acompanhamento de tratamentos.
             </p>
             <div class="app-tags">
@@ -1441,15 +1503,15 @@
               <span class="atag">Notifications</span>
             </div>
             <div class="app-foot">
-              <div class="dl-count">Em desenvolvimento</div>
-              <span class="store-btn sbtn-dis">Em breve</span>
+              <div class="dl-count" data-pt="Em desenvolvimento" data-en="In development">Em desenvolvimento</div>
+              <span class="store-btn sbtn-dis" data-pt="Em breve" data-en="Coming soon">Em breve</span>
             </div>
           </div>
         </div>
       </div>
 
       <div class="apps-cta reveal">
-        <a href="https://play.google.com/store/apps/developer?id=Jone+Bulande" target="_blank" class="btn btn-ghost">
+        <a href="https://play.google.com/store/apps/developer?id=Jone+Bulande" target="_blank" class="btn btn-ghost" data-pt="Ver todos os apps na Play Store →" data-en="See all apps on Play Store →">
           Ver todos os apps na Play Store →
         </a>
       </div>
@@ -1458,8 +1520,10 @@
 
   <!-- PROJECTS -->
   <section id="work" class="sec">
-    <div class="sec-tag reveal">Projetos Web</div>
-    <h2 class="sec-title reveal">Sites & <span class="muted">Código</span></h2>
+    <div class="sec-tag reveal" data-pt="Projetos Web" data-en="Web Projects">Projetos Web</div>
+    <h2 class="sec-title reveal">
+      <span data-pt="Sites & " data-en="Sites & ">Sites & </span><span class="muted" data-pt="Código" data-en="Code">Código</span>
+    </h2>
 
     <div class="proj-grid">
       <!-- Rhema -->
@@ -1482,9 +1546,11 @@
           </div>
         </div>
         <div class="proj-body">
-          <div class="proj-type">★ Cliente real · Website Institucional · Live</div>
+          <div class="proj-type" data-pt="★ Cliente real · Website Institucional · Live" data-en="★ Real Client · Institutional Website · Live">★ Cliente real · Website Institucional · Live</div>
           <div class="proj-name">Rhema Microcrédito</div>
-          <p class="proj-desc">Website completo para empresa de microcrédito em Moçambique. Animações, contadores dinâmicos, formulário de contacto e design totalmente responsivo.</p>
+          <p class="proj-desc" data-pt="Website completo para empresa de microcrédito em Moçambique. Animações, contadores dinâmicos, formulário de contacto e design totalmente responsivo." data-en="Complete website for microcredit company in Mozambique. Animations, dynamic counters, contact form and fully responsive design.">
+            Website completo para empresa de microcrédito em Moçambique. Animações, contadores dinâmicos, formulário de contacto e design totalmente responsivo.
+          </p>
           <div class="proj-foot">
             <div class="proj-tags">
               <span class="atag">HTML</span>
@@ -1508,9 +1574,11 @@
           </div>
         </div>
         <div class="proj-body">
-          <div class="proj-type">Open Source · Backend</div>
+          <div class="proj-type" data-pt="Open Source · Backend" data-en="Open Source · Backend">Open Source · Backend</div>
           <div class="proj-name">NodeJs CRUD API</div>
-          <p class="proj-desc">API REST completa com Node.js e Express. Operações CRUD com arquitectura escalável e boas práticas de desenvolvimento.</p>
+          <p class="proj-desc" data-pt="API REST completa com Node.js e Express. Operações CRUD com arquitectura escalável e boas práticas de desenvolvimento." data-en="Complete REST API with Node.js and Express. CRUD operations with scalable architecture and development best practices.">
+            API REST completa com Node.js e Express. Operações CRUD com arquitectura escalável e boas práticas de desenvolvimento.
+          </p>
           <div class="proj-foot">
             <div class="proj-tags">
               <span class="atag">Node.js</span>
@@ -1526,19 +1594,25 @@
       <a href="https://github.com/JoneBulande/BasicMathGame" target="_blank" class="sm-card reveal">
         <div class="sm-icon">🎮</div>
         <div class="sm-name">Basic Math Game</div>
-        <p class="sm-desc">Jogo web de matemática com JavaScript vanilla e CSS animado. 6 estrelas no GitHub.</p>
+        <p class="sm-desc" data-pt="Jogo web de matemática com JavaScript vanilla e CSS animado. 6 estrelas no GitHub." data-en="Math web game with vanilla JavaScript and animated CSS. 6 stars on GitHub.">
+          Jogo web de matemática com JavaScript vanilla e CSS animado. 6 estrelas no GitHub.
+        </p>
         <div class="sm-lang"><span class="ld" style="background:#FCD34D"></span> JavaScript · CSS</div>
       </a>
       <a href="https://github.com/JoneBulande/JogoDosFeriadosDeMocambique" target="_blank" class="sm-card reveal" style="transition-delay:.1s">
         <div class="sm-icon">🇲🇿</div>
         <div class="sm-name">Quiz Feriados MZ</div>
-        <p class="sm-desc">Quiz interactivo sobre os feriados nacionais de Moçambique — JS puro, responsivo.</p>
+        <p class="sm-desc" data-pt="Quiz interactivo sobre os feriados nacionais de Moçambique — JS puro, responsivo." data-en="Interactive quiz about Mozambique's national holidays — pure JS, responsive.">
+          Quiz interactivo sobre os feriados nacionais de Moçambique — JS puro, responsivo.
+        </p>
         <div class="sm-lang"><span class="ld" style="background:#FCD34D"></span> JavaScript · CSS</div>
       </a>
       <a href="https://github.com/JoneBulande/codeinthedark2022-desafio-1" target="_blank" class="sm-card reveal" style="transition-delay:.2s">
         <div class="sm-icon">⚡</div>
         <div class="sm-name">Code in the Dark '22</div>
-        <p class="sm-desc">2 desafios na competição presencial em Maputo — HTML/CSS ao vivo, sem preview.</p>
+        <p class="sm-desc" data-pt="2 desafios na competição presencial em Maputo — HTML/CSS ao vivo, sem preview." data-en="2 challenges in live competition in Maputo — HTML/CSS live, no preview.">
+          2 desafios na competição presencial em Maputo — HTML/CSS ao vivo, sem preview.
+        </p>
         <div class="sm-lang"><span class="ld" style="background:#F472B6"></span> HTML · CSS</div>
       </a>
     </div>
@@ -1546,89 +1620,114 @@
 
   <!-- SERVICES -->
   <section id="services" class="sec" style="padding-top:0">
-    <div class="sec-tag reveal">Serviços</div>
-    <h2 class="sec-title reveal">O que posso construir <span class="muted">para ti</span></h2>
+    <div class="sec-tag reveal" data-pt="Serviços" data-en="Services">Serviços</div>
+    <h2 class="sec-title reveal">
+      <span data-pt="O que posso construir " data-en="What I can build ">O que posso construir </span><span class="muted" data-pt="para ti" data-en="for you">para ti</span>
+    </h2>
 
     <div class="svc-grid">
       <div class="svc tall reveal">
         <div class="svc-n">01</div>
         <span class="svc-icon">📱</span>
-        <div class="svc-title">Apps Mobile Cross-Platform</div>
-        <p class="svc-desc">Desenvolvimento completo com Flutter — Android e iOS a partir de uma única codebase. Performance nativa, UI refinada e integração total.</p>
+        <div class="svc-title" data-pt="Apps Mobile Cross-Platform" data-en="Cross-Platform Mobile Apps">Apps Mobile Cross-Platform</div>
+        <p class="svc-desc" data-pt="Desenvolvimento completo com Flutter — Android e iOS a partir de uma única codebase. Performance nativa, UI refinada e integração total." data-en="Complete development with Flutter — Android and iOS from a single codebase. Native performance, refined UI and full integration.">
+          Desenvolvimento completo com Flutter — Android e iOS a partir de uma única codebase. Performance nativa, UI refinada e integração total.
+        </p>
         <ul class="svc-list">
-          <li>UI/UX responsivo e polido</li>
-          <li>Integração com APIs e Firebase</li>
-          <li>Gestão de estado com Riverpod</li>
-          <li>Armazenamento local (SQLite, Hive)</li>
-          <li>Notificações e autenticação</li>
-          <li>Deploy na Play Store e App Store</li>
+          <li data-pt="UI/UX responsivo e polido" data-en="Responsive and polished UI/UX">UI/UX responsivo e polido</li>
+          <li data-pt="Integração com APIs e Firebase" data-en="Integration with APIs and Firebase">Integração com APIs e Firebase</li>
+          <li data-pt="Gestão de estado com Riverpod" data-en="State management with Riverpod">Gestão de estado com Riverpod</li>
+          <li data-pt="Armazenamento local (SQLite, Hive)" data-en="Local storage (SQLite, Hive)">Armazenamento local (SQLite, Hive)</li>
+          <li data-pt="Notificações e autenticação" data-en="Notifications and authentication">Notificações e autenticação</li>
+          <li data-pt="Deploy na Play Store e App Store" data-en="Deployment on Play Store and App Store">Deploy na Play Store e App Store</li>
         </ul>
       </div>
       <div class="svc reveal" style="transition-delay:.1s">
         <div class="svc-n">02</div>
         <span class="svc-icon">🌐</span>
-        <div class="svc-title">Websites Modernos</div>
-        <p class="svc-desc">Sites institucionais e landing pages com HTML, CSS e JS — responsivos, rápidos e visualmente fortes.</p>
+        <div class="svc-title" data-pt="Websites Modernos" data-en="Modern Websites">Websites Modernos</div>
+        <p class="svc-desc" data-pt="Sites institucionais e landing pages com HTML, CSS e JS — responsivos, rápidos e visualmente fortes." data-en="Institutional websites and landing pages with HTML, CSS and JS — responsive, fast and visually strong.">
+          Sites institucionais e landing pages com HTML, CSS e JS — responsivos, rápidos e visualmente fortes.
+        </p>
       </div>
       <div class="svc reveal" style="transition-delay:.2s">
         <div class="svc-n">03</div>
         <span class="svc-icon">⚡</span>
-        <div class="svc-title">Backends & APIs</div>
-        <p class="svc-desc">APIs REST escaláveis com Node.js e Express. Integração com bases de dados e deploy em produção.</p>
+        <div class="svc-title" data-pt="Backends & APIs" data-en="Backends & APIs">Backends & APIs</div>
+        <p class="svc-desc" data-pt="APIs REST escaláveis com Node.js e Express. Integração com bases de dados e deploy em produção." data-en="Scalable REST APIs with Node.js and Express. Database integration and production deployment.">
+          APIs REST escaláveis com Node.js e Express. Integração com bases de dados e deploy em produção.
+        </p>
       </div>
       <div class="svc lo reveal" style="transition-delay:.15s">
         <div class="svc-n">04</div>
         <span class="svc-icon">🚀</span>
-        <div class="svc-title">Deploy nas Lojas</div>
-        <p class="svc-desc">Publicação completa na Play Store e App Store — certificados, ASO e actualizações incluídas.</p>
+        <div class="svc-title" data-pt="Deploy nas Lojas" data-en="Store Deployment">Deploy nas Lojas</div>
+        <p class="svc-desc" data-pt="Publicação completa na Play Store e App Store — certificados, ASO e actualizações incluídas." data-en="Complete publishing on Play Store and App Store — certificates, ASO and updates included.">
+          Publicação completa na Play Store e App Store — certificados, ASO e actualizações incluídas.
+        </p>
       </div>
       <div class="svc reveal" style="transition-delay:.25s">
         <div class="svc-n">05</div>
         <span class="svc-icon">🎨</span>
-        <div class="svc-title">UI/UX & Prototipagem</div>
-        <p class="svc-desc">Do conceito ao protótipo funcional. Foco na experiência do utilizador e interfaces que convertem.</p>
+        <div class="svc-title" data-pt="UI/UX & Prototipagem" data-en="UI/UX & Prototyping">UI/UX & Prototipagem</div>
+        <p class="svc-desc" data-pt="Do conceito ao protótipo funcional. Foco na experiência do utilizador e interfaces que convertem." data-en="From concept to functional prototype. Focus on user experience and converting interfaces.">
+          Do conceito ao protótipo funcional. Foco na experiência do utilizador e interfaces que convertem.
+        </p>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section id="contact" class="sec" style="padding-top:0">
-    <div class="sec-tag reveal">Contato</div>
-    <h2 class="sec-title reveal">Vamos trabalhar <span class="muted">juntos?</span></h2>
+    <div class="sec-tag reveal" data-pt="Contato" data-en="Contact">Contato</div>
+    <h2 class="sec-title reveal">
+      <span data-pt="Vamos trabalhar " data-en="Let's work ">Vamos trabalhar </span><span class="muted" data-pt="juntos?" data-en="together?">juntos?</span>
+    </h2>
 
     <div class="contact-wrap">
       <div class="contact-main reveal">
-        <div class="contact-h">
+        <div class="contact-h" data-pt="Tem um projeto em mente?" data-en="Do you have a project in mind?">
           Tem um projeto em mente?
         </div>
-        <p class="contact-sub">
+        <p class="contact-sub" data-pt="App mobile, website ou API — respondo em menos de 24h e posso começar rapidamente." data-en="Mobile app, website or API — I respond in less than 24h and can start quickly.">
           App mobile, website ou API — respondo em menos de 24h e posso começar rapidamente.
         </p>
         <div class="contact-ctas">
-          <a href="https://wa.me/+258870364565" target="_blank" class="btn btn-white">Enviar mensagem →</a>
-          <a href="mailto:JoneBulande@gmail.com" class="btn btn-ghost">Enviar email</a>
+          <a href="https://wa.me/+258870364565" target="_blank" class="btn btn-white" data-pt="Enviar mensagem →" data-en="Send message →">Enviar mensagem →</a>
+          <a href="mailto:JoneBulande@gmail.com" class="btn btn-ghost" data-pt="Enviar email" data-en="Send email">Enviar email</a>
         </div>
-        <div class="disc-note">🎯 <strong>5% de desconto</strong> no primeiro projeto</div>
+        <div class="disc-note">
+          <span data-pt="🎯 " data-en="🎯 ">🎯 </span><strong data-pt="5% de desconto" data-en="5% discount">5% de desconto</strong><span data-pt=" no primeiro projeto" data-en=" on first project"> no primeiro projeto</span>
+        </div>
       </div>
 
       <div class="contact-side reveal" style="transition-delay:.15s">
         <a href="https://wa.me/+258870364565" target="_blank" class="ci">
           <div class="ci-ico">📱</div>
-          <div><div class="ci-l">WhatsApp</div><div class="ci-v">+258 870 364 565</div></div>
+          <div>
+            <div class="ci-l" data-pt="WhatsApp" data-en="WhatsApp">WhatsApp</div>
+            <div class="ci-v">+258 870 364 565</div>
+          </div>
           <div class="ci-arr">↗</div>
         </a>
         <a href="mailto:JoneBulande@gmail.com" class="ci">
           <div class="ci-ico">✉️</div>
-          <div><div class="ci-l">Email</div><div class="ci-v">JoneBulande@gmail.com</div></div>
+          <div>
+            <div class="ci-l" data-pt="Email" data-en="Email">Email</div>
+            <div class="ci-v">JoneBulande@gmail.com</div>
+          </div>
           <div class="ci-arr">↗</div>
         </a>
         <a href="https://www.linkedin.com/in/Jone-Bulande/" target="_blank" class="ci">
           <div class="ci-ico">💼</div>
-          <div><div class="ci-l">LinkedIn</div><div class="ci-v">Jone Bulande</div></div>
+          <div>
+            <div class="ci-l" data-pt="LinkedIn" data-en="LinkedIn">LinkedIn</div>
+            <div class="ci-v">Jone Bulande</div>
+          </div>
           <div class="ci-arr">↗</div>
         </a>
         <div class="soc-row">
-          <span class="soc-lbl">Social</span>
+          <span class="soc-lbl" data-pt="Social" data-en="Social">Social</span>
           <a href="https://github.com/JoneBulande" target="_blank" class="soc" title="GitHub">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
           </a>
@@ -1648,11 +1747,82 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="foot-l"><strong>Jone Bulande</strong> · Fullstack Developer · Maputo, Moçambique 🇲🇿</div>
+    <div class="foot-l">
+      <strong>Jone Bulande</strong> <span data-pt="· Fullstack Developer · Maputo, Moçambique 🇲🇿" data-en="· Fullstack Developer · Maputo, Mozambique 🇲🇿">· Fullstack Developer · Maputo, Moçambique 🇲🇿</span>
+    </div>
     <div class="foot-r">© 2026</div>
   </footer>
 
   <script>
+    // Idioma
+    const SUPPORTED_LANGS = ['pt', 'en'];
+    const DEFAULT_LANG = 'pt';
+
+    // Get user's preferred language
+    function getInitialLanguage() {
+      const saved = localStorage.getItem('preferred-language');
+      if (saved && SUPPORTED_LANGS.includes(saved)) {
+        return saved;
+      }
+
+      const browserLang = navigator.language.toLowerCase().split('-')[0];
+      if (SUPPORTED_LANGS.includes(browserLang)) {
+        return browserLang;
+      }
+
+      return DEFAULT_LANG;
+    }
+
+    let currentLanguage = getInitialLanguage();
+
+    // Set language
+    function setLanguage(lang) {
+      if (!SUPPORTED_LANGS.includes(lang)) return;
+
+      currentLanguage = lang;
+      localStorage.setItem('preferred-language', lang);
+      document.documentElement.lang = lang;
+
+      // Update all elements with data attributes
+      document.querySelectorAll('[data-pt][data-en]').forEach(el => {
+        const text = lang === 'pt' ? el.getAttribute('data-pt') : el.getAttribute('data-en');
+        if (text) {
+          // If element has child nodes with text content, update them
+          if (el.childNodes.length > 0 && el.firstChild.nodeType === 3) {
+            el.firstChild.textContent = text;
+          } else if (el.childNodes.length === 0) {
+            el.textContent = text;
+          } else {
+            // For complex elements, we need to be more careful
+            const hasOnlyText = Array.from(el.childNodes).every(node =>
+              node.nodeType === 3 || (node.nodeType === 1 && node.children.length === 0)
+            );
+            if (hasOnlyText) {
+              el.textContent = text;
+            }
+          }
+        }
+      });
+
+      // Update language button states
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+
+      // Trigger custom event for any additional logic
+      window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
+    }
+
+    // Initialize language buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        setLanguage(btn.getAttribute('data-lang'));
+      });
+    });
+
+    // Initial language setup
+    setLanguage(currentLanguage);
+
     // Nav scroll
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
