@@ -402,6 +402,8 @@ em, .serif { font-family: var(--f-serif); font-style: italic; font-weight: 400; 
 .card--arq { --card-bg: radial-gradient(120% 90% at 80% 20%, #2a1748 0%, #140c24 55%, #0e0919 100%); --card-accent: #e0b25e; --card-muted: #b7aecb; }
 .card--marrar { --card-bg: radial-gradient(120% 90% at 80% 30%, #2b2160 0%, #110e22 55%, #0b0a14 100%); --card-accent: #a996ff; --card-muted: #aaa6c4; }
 .card--blue { --card-bg: radial-gradient(120% 90% at 85% 20%, #1d43c9 0%, #0f1e5c 50%, #0a1236 100%); --card-accent: #ffc23d; --card-muted: #a9b6e3; }
+.card--ts { --card-bg: radial-gradient(120% 90% at 80% 25%, #34402a 0%, #171a14 55%, #0d0e0c 100%); --card-accent: #d4f53c; --card-muted: #b0b5a4; }
+.phones--tall .phone { aspect-ratio: 780 / 1688; border-radius: 26px; }
 .card--moz { --card-bg: radial-gradient(120% 90% at 85% 20%, #10503a 0%, #0c2a20 50%, #08150f 100%); --card-accent: #20d39a; --card-muted: #9fc0b2; }
 
 /* Index (other work) ----------------------------------------------------- */
